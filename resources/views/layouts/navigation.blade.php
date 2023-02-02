@@ -1,100 +1,117 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
-    <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
-                    </a>
+<div>
+    <!-- Header -->
+    <header>
+        <!-- Header desktop -->
+        <div class="wrap-menu-header gradient1 trans-0-4">
+            <div class="container h-full">
+                <div class="wrap_header trans-0-3">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="{{ asset('assets/images/icons/logo.png') }}" alt="IMG-LOGO" data-logofixed="{{ asset('assets/images/icons/logo2.png') }}">
+                        </a>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="wrap_menu p-l-45 p-l-0-xl">
+                        <nav class="menu">
+                            <ul class="main_menu">
+                                <li>
+                                    <a href="index.html">Home</a>
+                                </li>
+
+                                <li>
+                                    <a href="menu.html">Menu</a>
+                                </li>
+
+                                <li>
+                                    <a href="reservation.html">Reservation</a>
+                                </li>
+
+                                <li>
+                                    <a href="gallery.html">Gallery</a>
+                                </li>
+
+                                <li>
+                                    <a href="about.html">About</a>
+                                </li>
+
+                                <li>
+                                    <a href="blog.html">Blog</a>
+                                </li>
+
+                                <li>
+                                    <a href="contact.html">Contact</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <!-- Social -->
+                    <div class="social flex-w flex-l-m p-r-20">
+                        <a href="#"><i class="fa fa-tripadvisor" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-facebook m-l-21" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-twitter m-l-21" aria-hidden="true"></i></a>
+
+                        <button class="btn-show-sidebar m-l-33 trans-0-4"></button>
+                    </div>
                 </div>
-
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                </div>
-            </div>
-
-            <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
-                <x-dropdown align="right" width="48">
-                    <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->name }}</div>
-
-                            <div class="ml-1">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                        </button>
-                    </x-slot>
-
-                    <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
-                        </x-dropdown-link>
-
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </form>
-                    </x-slot>
-                </x-dropdown>
-            </div>
-
-            <!-- Hamburger -->
-            <div class="-mr-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
             </div>
         </div>
-    </div>
+    </header>
 
-    <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-        </div>
+    <!-- Sidebar -->
+    <aside class="sidebar trans-0-4">
+        <!-- Button Hide sidebar -->
+        <button class="btn-hide-sidebar fa fa-times color0-hov trans-0-4"></button>
 
-        <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
-            <div class="px-4">
-                <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+        <!-- - -->
+        <ul class="menu-sidebar p-t-95 p-b-70">
+            <li class="t-center m-b-13">
+                <a href="index.html" class="txt19">Home</a>
+            </li>
+
+            <li class="t-center m-b-13">
+                <a href="menu.html" class="txt19">Menu</a>
+            </li>
+
+            <li class="t-center m-b-13">
+                <a href="gallery.html" class="txt19">Gallery</a>
+            </li>
+
+            <li class="t-center m-b-13">
+                <a href="about.html" class="txt19">About</a>
+            </li>
+
+            <li class="t-center m-b-13">
+                <a href="blog.html" class="txt19">Blog</a>
+            </li>
+
+            <li class="t-center m-b-33">
+                <a href="contact.html" class="txt19">Contact</a>
+            </li>
+
+            <li class="t-center">
+                <!-- Button3 -->
+                <a href="reservation.html" class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto">
+                    Reservation
+                </a>
+            </li>
+        </ul>
+
+        <!-- - -->
+        <div class="gallery-sidebar t-center p-l-60 p-r-60 p-b-40">
+            <!-- - -->
+            <h4 class="txt20 m-b-33">
+                Gallery
+            </h4>
+
+            <!-- Gallery -->
+            <div class="wrap-gallery-sidebar flex-w">
+                <a class="item-gallery-sidebar wrap-pic-w" href="{{ asset('assets/images/photo-gallery-01.jpg') }}" data-lightbox="gallery-footer">
+                    <img src="{{ asset('assets/images/photo-gallery-thumb-01.jpg') }}" alt="GALLERY">
+                </a>
             </div>
-
-            <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
-                </x-responsive-nav-link>
-
-                <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-
-                    <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </x-responsive-nav-link>
-                </form>
-            </div>
         </div>
-    </div>
-</nav>
+    </aside>
+</div>
