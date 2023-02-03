@@ -26,8 +26,8 @@ Route::group(['as' => 'members.'], function() {
             ->name('reservations.create');
         Route::post('/store', [ReservationController::class, 'store'])
             ->name('reservations.store');
-        // Route::get('/{code}', [ReservationController::class, 'show'])
-        //     ->name('reservations.show');
+        Route::get('/{code}', [ReservationController::class, 'show'])
+            ->name('reservations.show');
     });
 });
 

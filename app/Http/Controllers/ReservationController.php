@@ -55,6 +55,9 @@ class ReservationController extends Controller
 
     public function show(Request $request, $code)
     {
-        $reservations = Reservation::where('code', $code)->first();
+        $reservation = Reservation::select('code', 'date', 'time', 'name', 'people')
+            ->where('code', $code)
+            ->firstOrFail();
+        return view('reservation.show', compact('reservation'));
     }
 }
