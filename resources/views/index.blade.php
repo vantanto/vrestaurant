@@ -4,7 +4,8 @@
 <section class="section-slide">
     <div class="wrap-slick1">
         <div class="slick1">
-            <div class="item-slick1 item1-slick1 lazyload" data-original="{{ asset('assets/images/slide1-01.jpg') }}">
+            @isset($banners[0])
+            <div class="item-slick1 item1-slick1 lazyload" data-original="{{ Storage::disk('public')->url($banners[0]->image) }}">
                 <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
                     <span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="fadeInDown">
                         Welcome to
@@ -22,8 +23,10 @@
                     </div>
                 </div>
             </div>
+            @endisset
 
-            <div class="item-slick1 item2-slick1 lazyload" data-original="{{ asset('assets/images/master-slides-02.jpg') }}">
+            @isset($banners[1])
+            <div class="item-slick1 item2-slick1 lazyload" data-original="{{ Storage::disk('public')->url($banners[1]->image) }}">
                 <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
                     <span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="rollIn">
                         Welcome to
@@ -41,8 +44,10 @@
                     </div>
                 </div>
             </div>
+            @endisset
 
-            <div class="item-slick1 item3-slick1 lazyload" data-original="{{ asset('assets/images/master-slides-01.jpg') }}">
+            @isset($banners[2])
+            <div class="item-slick1 item3-slick1 lazyload" data-original="{{ Storage::disk('public')->url($banners[2]->image) }}">
                 <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
                     <span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="rotateInDownLeft">
                         Welcome to
@@ -60,6 +65,7 @@
                     </div>
                 </div>
             </div>
+            @endisset
 
         </div>
 
@@ -74,7 +80,7 @@
             <div class="col-md-6 p-t-45 p-b-30">
                 <div class="wrap-text-welcome t-center">
                     <span class="tit2 t-center">
-                        Italian Restaurant
+                        {{ $about_main->title }}
                     </span>
 
                     <h3 class="tit3 t-center m-b-35 m-t-5">
@@ -82,7 +88,7 @@
                     </h3>
 
                     <p class="t-center m-b-22 size3 m-l-r-auto">
-                        Donec quis lorem nulla. Nunc eu odio mi. Morbi nec lobortis est. Sed fringilla, nunc sed imperdiet lacinia, nisl ante egestas mi, ac facilisis ligula sem id neque.
+                        {{ $about_main->description_short }}
                     </p>
 
                     <a href="about.html" class="txt4">
@@ -94,7 +100,7 @@
 
             <div class="col-md-6 p-b-30">
                 <div class="wrap-pic-welcome size2 bo-rad-10 hov-img-zoom m-l-r-auto">
-                    <a href="#"><img data-original="{{ asset('assets/images/our-story-01.jpg') }}" class="lazyload" alt="IMG-INTRO"></a>
+                    <a href="#"><img data-original="{{ Storage::disk('public')->url($about_main->image) }}" class="lazyload" alt="IMG-INTRO"></a>
                 </div>
             </div>
         </div>
@@ -103,35 +109,36 @@
 
 <!-- Intro -->
 <section class="section-intro">
-    <div class="header-intro parallax100 t-center p-t-135 p-b-158 lazyload" data-original="{{ asset('assets/images/bg-intro-01.jpg') }}">
+    <div class="header-intro parallax100 t-center p-t-135 p-b-158 lazyload" data-original="{{ Storage::disk('public')->url('images/about/bg-intro-01.jpg') }}">
         <span class="tit2 p-l-15 p-r-15">
             Discover
         </span>
 
         <h3 class="tit4 t-center p-l-15 p-r-15 p-t-3">
-            Pato Place
+            {{ config('app.name') }} Place
         </h3>
     </div>
 
     <div class="content-intro bg-white p-t-77 p-b-133">
         <div class="container">
             <div class="row">
+                @foreach($abouts as $about)
                 <div class="col-md-4 p-t-30">
                     <!-- Block1 -->
                     <div class="blo1">
                         <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
-                            <a href="#"><img data-original="{{ asset('assets/images/intro-01.jpg') }}" class="lazyload" alt="IMG-INTRO"></a>
+                            <a href="#"><img data-original="{{ Storage::disk('public')->url($about->image) }}" class="lazyload" alt="IMG-INTRO"></a>
                         </div>
 
                         <div class="wrap-text-blo1 p-t-35">
                             <a href="#">
                                 <h4 class="txt5 color0-hov trans-0-4 m-b-13">
-                                    Romantic Restaurant
+                                    {{ $about->title }}
                                 </h4>
                             </a>
 
                             <p class="m-b-20">
-                                Phasellus lorem enim, luctus ut velit eget, con-vallis egestas eros.
+                                {{ $about->description_short }}
                             </p>
 
                             <a href="#" class="txt4">
@@ -141,59 +148,7 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="col-md-4 p-t-30">
-                    <!-- Block1 -->
-                    <div class="blo1">
-                        <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
-                            <a href="#"><img data-original="{{ asset('assets/images/intro-02.jpg') }}" class="lazyload" alt="IMG-INTRO"></a>
-                        </div>
-
-                        <div class="wrap-text-blo1 p-t-35">
-                            <a href="#">
-                                <h4 class="txt5 color0-hov trans-0-4 m-b-13">
-                                    Delicious Food
-                                </h4>
-                            </a>
-
-                            <p class="m-b-20">
-                                Aliquam eget aliquam magna, quis posuere risus ac justo ipsum nibh urna
-                            </p>
-
-                            <a href="#" class="txt4">
-                                Learn More
-                                <i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 p-t-30">
-                    <!-- Block1 -->
-                    <div class="blo1">
-                        <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
-                            <a href="#"><img data-original="{{ asset('assets/images/intro-04.jpg') }}" class="lazyload" alt="IMG-INTRO"></a>
-                        </div>
-
-                        <div class="wrap-text-blo1 p-t-35">
-                            <a href="#">
-                                <h4 class="txt5 color0-hov trans-0-4 m-b-13">
-                                    Red Wines You Love
-                                </h4>
-                            </a>
-
-                            <p class="m-b-20">
-                                Sed ornare ligula eget tortor tempor, quis porta tellus dictum.
-                            </p>
-
-                            <a href="#" class="txt4">
-                                Learn More
-                                <i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
         </div>
     </div>
@@ -215,81 +170,37 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="row">
-                    <div class="col-sm-6">
+                    @foreach ($menus->take(3) as $menu)
+                    <div class="{{ $loop->iteration == 3 ? 'col-12' : 'col-sm-6' }}">
                         <!-- Item our menu -->
                         <div class="item-ourmenu bo-rad-10 hov-img-zoom pos-relative m-t-30">
-                            <a href="#"><img data-original="{{ asset('assets/images/our-menu-01.jpg') }}" class="lazyload" alt="IMG-INTRO"></a>
+                            <a href="#"><img data-original="{{ Storage::disk('public')->url($menu->image) }}" class="lazyload" alt="IMG-INTRO"></a>
 
                             <!-- Button2 -->
-                            <a href="#" class="btn2 flex-c-m txt5 ab-c-m size4">
-                                Lunch
+                            <a href="#" class="btn2 flex-c-m txt5 ab-c-m size{{ $loop->iteration + 3 }}">
+                                {{ $menu->name }}
                             </a>
                         </div>
                     </div>
-
-                    <div class="col-sm-6">
-                        <!-- Item our menu -->
-                        <div class="item-ourmenu bo-rad-10 hov-img-zoom pos-relative m-t-30">
-                            <a href="#"><img data-original="{{ asset('assets/images/our-menu-05.jpg') }}" class="lazyload" alt="IMG-INTRO"></a>
-
-                            <!-- Button2 -->
-                            <a href="#" class="btn2 flex-c-m txt5 ab-c-m size5">
-                                Dinner
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-12">
-                        <!-- Item our menu -->
-                        <div class="item-ourmenu bo-rad-10 hov-img-zoom pos-relative m-t-30">
-                            <a href="#"><img data-original="{{ asset('assets/images/our-menu-13.jpg') }}" class="lazyload" alt="IMG-INTRO"></a>
-
-                            <!-- Button2 -->
-                            <a href="#" class="btn2 flex-c-m txt5 ab-c-m size6">
-                                Happy Hour
-                            </a>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
 
             <div class="col-md-4">
                 <div class="row">
+                    @foreach ($menus->take(-3) as $menu)
                     <div class="col-12">
                         <!-- Item our menu -->
                         <div class="item-ourmenu bo-rad-10 hov-img-zoom pos-relative m-t-30">
-                            <a href="#"><img data-original="{{ asset('assets/images/our-menu-08.jpg') }}" class="lazyload" alt="IMG-INTRO"></a>
+                            <a href="#"><img data-original="{{ Storage::disk('public')->url($menu->image) }}" class="lazyload" alt="IMG-INTRO"></a>
 
                             <!-- Button2 -->
-                            <a href="#" class="btn2 flex-c-m txt5 ab-c-m size7">
-                                Drink
+                            <a href="#" class="btn2 flex-c-m txt5 ab-c-m size{{ $loop->iteration + 6 }}">
+                                {{ $menu->name }}
                             </a>
                         </div>
                     </div>
-
-                    <div class="col-12">
-                        <!-- Item our menu -->
-                        <div class="item-ourmenu bo-rad-10 hov-img-zoom pos-relative m-t-30">
-                            <a href="#"><img data-original="{{ asset('assets/images/our-menu-10.jpg') }}" class="lazyload" alt="IMG-INTRO"></a>
-
-                            <!-- Button2 -->
-                            <a href="#" class="btn2 flex-c-m txt5 ab-c-m size8">
-                                Starters
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-12">
-                        <!-- Item our menu -->
-                        <div class="item-ourmenu bo-rad-10 hov-img-zoom pos-relative m-t-30">
-                            <a href="#"><img data-original="{{ asset('assets/images/our-menu-16.jpg') }}" class="lazyload" alt="IMG-INTRO"></a>
-
-                            <!-- Button2 -->
-                            <a href="#" class="btn2 flex-c-m txt5 ab-c-m size9">
-                                Dessert
-                            </a>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -302,7 +213,8 @@
 <section class="section-event">
     <div class="wrap-slick2">
         <div class="slick2">
-            <div class="item-slick2 item1-slick2 lazyload" data-original="{{ asset('assets/images/bg-event-01.jpg') }}">
+            @foreach ($events_upcomings as $event_upcom)
+            <div class="item-slick2 item1-slick2 lazyload" data-original="{{ Storage::disk('public')->url($event_upcom->bg_image) }}">
                 <div class="wrap-content-slide2 p-t-115 p-b-208">
                     <div class="container">
                         <!-- - -->
@@ -317,12 +229,12 @@
                         </div>
 
                         <!-- Block2 -->
-                        <div class="blo2 flex-w flex-str flex-col-c-m-lg animated visible-false" data-appear="zoomIn">
+                        <div class="blo2 flex-w flex-str flex-col-c-m-lg animated visible-false" data-appear="@if($loop->iteration == 1) zoomIn @elseif($loop->iteration == 2) fadeInDown @else rotateInUpLeft @endif">
                             <!-- Pic block2 -->
-                            <a href="#" class="wrap-pic-blo2 bg1-blo2 lazyload" data-original="{{ asset('assets/images/event-02.jpg') }}">
+                            <a href="#" class="wrap-pic-blo2 bg1-blo2 lazyload" data-original="{{ Storage::disk('public')->url($event_upcom->image) }}">
                                 <div class="time-event size10 txt6 effect1">
                                     <span class="txt-effect1 flex-c-m t-center">
-                                        08:00 PM Tuesday - 21 November 2018
+                                        {{ date('h:i A l - d F Y', strtotime($event_upcom->date_start)) }}
                                     </span>
                                 </div>
                             </a>
@@ -330,52 +242,32 @@
                             <!-- Text block2 -->
                             <div class="wrap-text-blo2 flex-col-c-m p-l-40 p-r-40 p-t-45 p-b-30">
                                 <h4 class="tit7 t-center m-b-10">
-                                    Wines during specific nights
+                                    {{ $event_upcom->title }}
                                 </h4>
 
                                 <p class="t-center">
-                                    Donec quis lorem nulla. Nunc eu odio mi. Morbi nec lobortis est. Sed fringilla, nunc sed imperdiet lacinia
+                                    {{ $event_upcom->description }}
                                 </p>
 
-                                <div class="flex-sa-m flex-w w-full m-t-40">
+                                <div class="flex-sa-m flex-w w-full m-t-40 clockdiv" data-date="{{ $event_upcom->date_start }}">
                                     <div class="size11 flex-col-c-m">
-                                        <span class="dis-block t-center txt7 m-b-2 days">
-                                            25
-                                        </span>
-
-                                        <span class="dis-block t-center txt8">
-                                            Days
-                                        </span>
+                                        <span class="dis-block t-center txt7 m-b-2 days">24</span>
+                                        <span class="dis-block t-center txt8">Days</span>
                                     </div>
 
                                     <div class="size11 flex-col-c-m">
-                                        <span class="dis-block t-center txt7 m-b-2 hours">
-                                            12
-                                        </span>
-
-                                        <span class="dis-block t-center txt8">
-                                            Hours
-                                        </span>
+                                        <span class="dis-block t-center txt7 m-b-2 hours">12</span>
+                                        <span class="dis-block t-center txt8">Hours</span>
                                     </div>
 
                                     <div class="size11 flex-col-c-m">
-                                        <span class="dis-block t-center txt7 m-b-2 minutes">
-                                            59
-                                        </span>
-
-                                        <span class="dis-block t-center txt8">
-                                            Minutes
-                                        </span>
+                                        <span class="dis-block t-center txt7 m-b-2 minutes">50</span>
+                                        <span class="dis-block t-center txt8">Minutes</span>
                                     </div>
 
                                     <div class="size11 flex-col-c-m">
-                                        <span class="dis-block t-center txt7 m-b-2 seconds">
-                                            56
-                                        </span>
-
-                                        <span class="dis-block t-center txt8">
-                                            Seconds
-                                        </span>
+                                        <span class="dis-block t-center txt7 m-b-2 seconds">56</span>
+                                        <span class="dis-block t-center txt8">Seconds</span>
                                     </div>
                                 </div>
 
@@ -388,181 +280,7 @@
                     </div>
                 </div>
             </div>
-
-            <div class="item-slick2 item2-slick2 lazyload" data-original="{{ asset('assets/images/bg-event-02.jpg') }}">
-                <div class="wrap-content-slide2 p-t-115 p-b-208">
-                    <div class="container">
-                        <!-- - -->
-                        <div class="title-event t-center m-b-52">
-                            <span class="tit2 p-l-15 p-r-15">
-                                Upcomming
-                            </span>
-
-                            <h3 class="tit6 t-center p-l-15 p-r-15 p-t-3">
-                                Events
-                            </h3>
-                        </div>
-
-                        <!-- Block2 -->
-                        <div class="blo2 flex-w flex-str flex-col-c-m-lg animated visible-false" data-appear="fadeInDown">
-                            <!-- Pic block2 -->
-                            <a href="#" class="wrap-pic-blo2 bg2-blo2 lazyload" data-original="{{ asset('assets/images/event-06.jpg') }}">
-                                <div class="time-event size10 txt6 effect1">
-                                    <span class="txt-effect1 flex-c-m">
-                                        08:00 PM Tuesday - 21 November 2018
-                                    </span>
-                                </div>
-                            </a>
-
-                            <!-- Text block2 -->
-                            <div class="wrap-text-blo2 flex-col-c-m p-l-40 p-r-40 p-t-45 p-b-30">
-                                <h4 class="tit7 t-center m-b-10">
-                                    Wines during specific nights
-                                </h4>
-
-                                <p class="t-center">
-                                    Donec quis lorem nulla. Nunc eu odio mi. Morbi nec lobortis est. Sed fringilla, nunc sed imperdiet lacinia
-                                </p>
-
-                                <div class="flex-sa-m flex-w w-full m-t-40">
-                                    <div class="size11 flex-col-c-m">
-                                        <span class="dis-block t-center txt7 m-b-2 days">
-                                            25
-                                        </span>
-
-                                        <span class="dis-block t-center txt8">
-                                            Days
-                                        </span>
-                                    </div>
-
-                                    <div class="size11 flex-col-c-m">
-                                        <span class="dis-block t-center txt7 m-b-2 hours">
-                                            12
-                                        </span>
-
-                                        <span class="dis-block t-center txt8">
-                                            Hours
-                                        </span>
-                                    </div>
-
-                                    <div class="size11 flex-col-c-m">
-                                        <span class="dis-block t-center txt7 m-b-2 minutes">
-                                            59
-                                        </span>
-
-                                        <span class="dis-block t-center txt8">
-                                            Minutes
-                                        </span>
-                                    </div>
-
-                                    <div class="size11 flex-col-c-m">
-                                        <span class="dis-block t-center txt7 m-b-2 seconds">
-                                            56
-                                        </span>
-
-                                        <span class="dis-block t-center txt8">
-                                            Seconds
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <a href="#" class="txt4 m-t-40">
-                                    View Details
-                                    <i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item-slick2 item3-slick2 lazyload" data-original="{{ asset('assets/images/bg-event-04.jpg') }}">
-                <div class="wrap-content-slide2 p-t-115 p-b-208">
-                    <div class="container">
-                        <!-- - -->
-                        <div class="title-event t-center m-b-52">
-                            <span class="tit2 p-l-15 p-r-15">
-                                Upcomming
-                            </span>
-
-                            <h3 class="tit6 t-center p-l-15 p-r-15 p-t-3">
-                                Events
-                            </h3>
-                        </div>
-
-                        <!-- Block2 -->
-                        <div class="blo2 flex-w flex-str flex-col-c-m-lg animated visible-false" data-appear="rotateInUpLeft">
-                            <!-- Pic block2 -->
-                            <a href="#" class="wrap-pic-blo2 bg3-blo2 lazyload" data-original="{{ asset('assets/images/event-01.jpg') }}">
-                                <div class="time-event size10 txt6 effect1">
-                                    <span class="txt-effect1 flex-c-m">
-                                        08:00 PM Tuesday - 21 November 2018
-                                    </span>
-                                </div>
-                            </a>
-
-                            <!-- Text block2 -->
-                            <div class="wrap-text-blo2 flex-col-c-m p-l-40 p-r-40 p-t-45 p-b-30">
-                                <h4 class="tit7 t-center m-b-10">
-                                    Wines during specific nights
-                                </h4>
-
-                                <p class="t-center">
-                                    Donec quis lorem nulla. Nunc eu odio mi. Morbi nec lobortis est. Sed fringilla, nunc sed imperdiet lacinia
-                                </p>
-
-                                <div class="flex-sa-m flex-w w-full m-t-40">
-                                    <div class="size11 flex-col-c-m">
-                                        <span class="dis-block t-center txt7 m-b-2 days">
-                                            25
-                                        </span>
-
-                                        <span class="dis-block t-center txt8">
-                                            Days
-                                        </span>
-                                    </div>
-
-                                    <div class="size11 flex-col-c-m">
-                                        <span class="dis-block t-center txt7 m-b-2 hours">
-                                            12
-                                        </span>
-
-                                        <span class="dis-block t-center txt8">
-                                            Hours
-                                        </span>
-                                    </div>
-
-                                    <div class="size11 flex-col-c-m">
-                                        <span class="dis-block t-center txt7 m-b-2 minutes">
-                                            59
-                                        </span>
-
-                                        <span class="dis-block t-center txt8">
-                                            Minutes
-                                        </span>
-                                    </div>
-
-                                    <div class="size11 flex-col-c-m">
-                                        <span class="dis-block t-center txt7 m-b-2 seconds">
-                                            56
-                                        </span>
-
-                                        <span class="dis-block t-center txt8">
-                                            Seconds
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <a href="#" class="txt4 m-t-40">
-                                    View Details
-                                    <i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            @endforeach
         </div>
 
         <div class="wrap-slick2-dots"></div>
@@ -570,7 +288,7 @@
 </section>
 
 <!-- Booking -->
-<section class="section-booking bg1-pattern p-t-100 p-b-110">
+<section id="reservation" class="section-booking bg1-pattern p-t-100 p-b-110">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 p-b-30">
@@ -584,99 +302,67 @@
                     </h3>
                 </div>
 
-                <form class="wrap-form-booking">
+                @if ($errors->reservations->any())
+                    <div class="wrap-form-booking">
+                        <ul class="text-danger">
+                            @foreach ($errors->reservations->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form method="post" action="{{ route('members.reservations.store') }}" class="wrap-form-booking">
+                    @csrf
                     <div class="row">
                         <div class="col-md-6">
                             <!-- Date -->
-                            <span class="txt9">
-                                Date
-                            </span>
-
+                            <span class="txt9">Date</span>
                             <div class="wrap-inputdate pos-relative txt10 size12 bo2 bo-rad-10 m-t-3 m-b-23">
-                                <input class="my-calendar bo-rad-10 sizefull txt10 p-l-20" type="text" name="date">
+                                <input class="my-calendar bo-rad-10 sizefull txt10 p-l-20" type="text" name="date" required>
                                 <i class="btn-calendar fa fa-calendar ab-r-m hov-pointer m-r-18" aria-hidden="true"></i>
                             </div>
 
                             <!-- Time -->
-                            <span class="txt9">
-                                Time
-                            </span>
-
+                            <span class="txt9">Time</span>
                             <div class="wrap-inputtime size12 bo2 bo-rad-10 m-t-3 m-b-23">
                                 <!-- Select2 -->
-                                <select class="selection-1" name="time">
-                                    <option>9:00</option>
-                                    <option>9:30</option>
-                                    <option>10:00</option>
-                                    <option>10:30</option>
-                                    <option>11:00</option>
-                                    <option>11:30</option>
-                                    <option>12:00</option>
-                                    <option>12:30</option>
-                                    <option>13:00</option>
-                                    <option>13:30</option>
-                                    <option>14:00</option>
-                                    <option>14:30</option>
-                                    <option>15:00</option>
-                                    <option>15:30</option>
-                                    <option>16:00</option>
-                                    <option>16:30</option>
-                                    <option>17:00</option>
-                                    <option>17:30</option>
-                                    <option>18:00</option>
+                                <select class="selection-1" name="time" required>
+                                    @foreach ($times as $time)
+                                        <option value="{{ $time->time }}">{{ date('H:i', strtotime($time->time)) }}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
                             <!-- People -->
-                            <span class="txt9">
-                                People
-                            </span>
-
+                            <span class="txt9">People</span>
                             <div class="wrap-inputpeople size12 bo2 bo-rad-10 m-t-3 m-b-23">
                                 <!-- Select2 -->
-                                <select class="selection-1" name="people">
-                                    <option>1 person</option>
-                                    <option>2 people</option>
-                                    <option>3 people</option>
-                                    <option>4 people</option>
-                                    <option>5 people</option>
-                                    <option>6 people</option>
-                                    <option>7 people</option>
-                                    <option>8 people</option>
-                                    <option>9 people</option>
-                                    <option>10 people</option>
-                                    <option>11 people</option>
-                                    <option>12 people</option>
+                                <select class="selection-1" name="people" required>
+                                    @for ($i=1; $i<=12; $i++)
+                                        <option value="{{ $i }}">{{ $i }} person</option>
+                                    @endfor
                                 </select>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <!-- Name -->
-                            <span class="txt9">
-                                Name
-                            </span>
-
+                            <span class="txt9">Name</span>
                             <div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
-                                <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="name" placeholder="Name">
+                                <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="name" placeholder="Name" required>
                             </div>
 
                             <!-- Phone -->
-                            <span class="txt9">
-                                Phone
-                            </span>
-
+                            <span class="txt9">Phone</span>
                             <div class="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
-                                <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="phone" placeholder="Phone">
+                                <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="phone" placeholder="Phone" required>
                             </div>
 
                             <!-- Email -->
-                            <span class="txt9">
-                                Email
-                            </span>
-
+                            <span class="txt9">Email</span>
                             <div class="wrap-inputemail size12 bo2 bo-rad-10 m-t-3 m-b-23">
-                                <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="email" placeholder="Email">
+                                <input class="bo-rad-10 sizefull txt10 p-l-20" type="email" name="email" placeholder="Email" required>
                             </div>
                         </div>
                     </div>
@@ -692,7 +378,7 @@
 
             <div class="col-lg-6 p-b-30 p-t-18">
                 <div class="wrap-pic-booking size2 bo-rad-10 hov-img-zoom m-l-r-auto">
-                    <img data-original="{{ asset('assets/images/booking-01.jpg') }}" class="lazyload" alt="IMG-OUR">
+                    <img data-original="{{ Storage::disk('public')->url('images/booking-01.jpg') }}" class="lazyload" alt="IMG-OUR">
                 </div>
             </div>
         </div>
@@ -807,7 +493,7 @@
 
 
 <!-- Video -->
-<section class="section-video parallax100 lazyload" data-original="{{ asset('assets/images/bg-cover-video-02.jpg') }}">
+<section class="section-video parallax100 lazyload" data-original="{{ Storage::disk('public')->url('images/bg-cover-video-02.jpg') }}">
     <div class="content-video t-center p-t-225 p-b-250">
         <span class="tit2 p-l-15 p-r-15">
             Discover

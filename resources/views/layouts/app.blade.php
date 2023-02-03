@@ -80,7 +80,7 @@
         });
     </script>
 
-    @method('scripts')
+    @stack('scripts')
 </body>
 
 </html>

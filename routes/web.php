@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +16,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+Route::get('/', [IndexController::class, 'index'])->name('index');
+
+Route::group(['as' => 'members.'], function() {
+    
+    // Reservation
+    Route::grouP(['prefix' => 'reservations'], function() {
+        Route::get('/create', [ReservationController::class, 'create'])
+            ->name('reservations.create');
+        Route::post('/store', [ReservationController::class, 'store'])
+            ->name('reservations.store');
+        // Route::get('/{code}', [ReservationController::class, 'show'])
+        //     ->name('reservations.show');
+    });
 });
 
 Route::get('/dashboard', function () {

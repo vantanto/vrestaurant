@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\File;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,5 +21,16 @@ class DatabaseSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@example.com',
         ]);
+
+        $this->call([
+            BannersSeeder::class,
+            AboutsSeeder::class,
+            MenusSeeder::class,
+            EventsSeeder::class,
+            TimesSeeder::class,
+            GalleriesSeeder::class,
+        ]);
+
+        File::copyDirectory(public_path('seeders/images'), storage_path('app/public/images'));
     }
 }

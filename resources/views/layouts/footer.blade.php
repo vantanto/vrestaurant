@@ -11,17 +11,17 @@
                 <ul class="m-b-70">
                     <li class="txt14 m-b-14">
                         <i class="fa fa-map-marker fs-16 dis-inline-block size19" aria-hidden="true"></i>
-                        8th floor, 379 Hudson St, New York, NY 10018
+                        Surabaya, Jawa Timur Indonesia
                     </li>
 
                     <li class="txt14 m-b-14">
                         <i class="fa fa-phone fs-16 dis-inline-block size19" aria-hidden="true"></i>
-                        (+1) 96 716 6879
+                        (+1) 23 456 7890
                     </li>
 
                     <li class="txt14 m-b-14">
                         <i class="fa fa-envelope fs-13 dis-inline-block size19" aria-hidden="true"></i>
-                        contact@site.com
+                        kristanto.margojoyo99@gmail.com
                     </li>
                 </ul>
 
@@ -96,9 +96,11 @@
 
                 <!-- Gallery footer -->
                 <div class="wrap-gallery-footer flex-w">
-                    <a class="item-gallery-footer wrap-pic-w" href="{{ asset('assets/images/photo-gallery-01.jpg') }}" data-lightbox="gallery-footer">
-                        <img src="{{ asset('assets/images/photo-gallery-thumb-01.jpg') }}" alt="GALLERY">
+                    @foreach ($galleries as $gallery)
+                    <a class="item-gallery-footer wrap-pic-w" href="{{ Storage::disk('public')->url($gallery->image) }}" data-lightbox="gallery-footer">
+                        <img data-original="{{ Storage::disk('public')->url($gallery->image) }}" class="lazyload" alt="GALLERY">
                     </a>
+                    @endforeach
                 </div>
 
             </div>
@@ -109,13 +111,13 @@
         <div class="container">
             <div class="flex-sb-m flex-w p-t-22 p-b-22">
                 <div class="p-t-5 p-b-5">
-                    <a href="#" class="fs-15 c-white"><i class="fa fa-tripadvisor" aria-hidden="true"></i></a>
-                    <a href="#" class="fs-15 c-white"><i class="fa fa-facebook m-l-18" aria-hidden="true"></i></a>
-                    <a href="#" class="fs-15 c-white"><i class="fa fa-twitter m-l-18" aria-hidden="true"></i></a>
+                    <a href="https://github.com/vantanto" class="fs-15 c-white"><i class="fa fa-github m-l-18" aria-hidden="true"></i></a>
+                    <a href="https://facebook.com/vantanto.99" class="fs-15 c-white"><i class="fa fa-facebook m-l-18" aria-hidden="true"></i></a>
                 </div>
 
                 <div class="txt17 p-r-20 p-t-5 p-b-5">
-                    Copyright &copy; 2018 All rights reserved | This template is made with <i class="fa fa-heart"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    Copyright &copy; 2023 <a href="https://github.com/vrestaurant" target="_blank">vrestaurant</a> | 
+                    Build with <i class="fa fa-heart"></i> by <a href="https://github.com/vantanto" target="_blank">vantanto</a>
                 </div>
             </div>
         </div>

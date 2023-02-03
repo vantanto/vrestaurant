@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Gallery;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\View\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        view()->composer('layouts.app', function ($view) {
+            $galleries = Gallery::where('active', true)
+                ->orderBy('id', 'desc')
+                ->limit(12)
+                ->get();
+            $view->with('galleries', $galleries);
+        });
     }
 
     /**

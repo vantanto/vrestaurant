@@ -16,11 +16,11 @@
       };
     }
 
-    function initializeClock(id, endtime) { 
-      var daysSpan = $('.days');
-      var hoursSpan = $('.hours');
-      var minutesSpan = $('.minutes');
-      var secondsSpan = $('.seconds');
+    function initializeClock(element, endtime) { 
+      var daysSpan = element.find('.days');
+      var hoursSpan = element.find('.hours');
+      var minutesSpan = element.find('.minutes');
+      var secondsSpan = element.find('.seconds');
 
       function updateClock() { 
         var t = getTimeRemaining(endtime);
@@ -39,7 +39,12 @@
       var timeinterval = setInterval(updateClock, 1000);
     }
 
-    var deadline = new Date(Date.parse(new Date()) + 25 * 24 * 60 * 60 * 1000 + 13 * 60 * 60 * 1000); 
-    initializeClock('clockdiv', deadline);
+    $(document).ready(function() {
+      $(".clockdiv").each(function() {
+        var element = $(this);
+        var deadline = new Date(Date.parse(element.attr('data-date'))); 
+        initializeClock(element, deadline);
+      });
+    });
 
 })(jQuery);

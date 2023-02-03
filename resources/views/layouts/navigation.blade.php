@@ -7,7 +7,7 @@
                 <div class="wrap_header trans-0-3">
                     <!-- Logo -->
                     <div class="logo">
-                        <a href="index.html">
+                        <a href="{{ url('/') }}">
                             <img src="{{ asset('assets/images/icons/logo.png') }}" alt="IMG-LOGO" data-logofixed="{{ asset('assets/images/icons/logo2.png') }}">
                         </a>
                     </div>
@@ -17,7 +17,7 @@
                         <nav class="menu">
                             <ul class="main_menu">
                                 <li>
-                                    <a href="index.html">Home</a>
+                                    <a href="{{ url('/') }}">Home</a>
                                 </li>
 
                                 <li>
@@ -25,7 +25,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="reservation.html">Reservation</a>
+                                    <a href="{{ route('members.reservations.create') }}">Reservation</a>
                                 </li>
 
                                 <li>
@@ -49,9 +49,8 @@
 
                     <!-- Social -->
                     <div class="social flex-w flex-l-m p-r-20">
-                        <a href="#"><i class="fa fa-tripadvisor" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-facebook m-l-21" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-twitter m-l-21" aria-hidden="true"></i></a>
+                        <a href="https://github.com/vantanto"><i class="fa fa-github" aria-hidden="true"></i></a>
+                        <a href="https://facebook.com/vantanto.99"><i class="fa fa-facebook m-l-21" aria-hidden="true"></i></a>
 
                         <button class="btn-show-sidebar m-l-33 trans-0-4"></button>
                     </div>
@@ -68,7 +67,7 @@
         <!-- - -->
         <ul class="menu-sidebar p-t-95 p-b-70">
             <li class="t-center m-b-13">
-                <a href="index.html" class="txt19">Home</a>
+                <a href="{{ url('/') }}" class="txt19">Home</a>
             </li>
 
             <li class="t-center m-b-13">
@@ -93,14 +92,14 @@
 
             <li class="t-center">
                 <!-- Button3 -->
-                <a href="reservation.html" class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto">
+                <a href="{{ route('members.reservations.create') }}" class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto">
                     Reservation
                 </a>
             </li>
         </ul>
 
         <!-- - -->
-        <div class="gallery-sidebar t-center p-l-60 p-r-60 p-b-40">
+        {{-- <div class="gallery-sidebar t-center p-l-60 p-r-60 p-b-40">
             <!-- - -->
             <h4 class="txt20 m-b-33">
                 Gallery
@@ -108,10 +107,12 @@
 
             <!-- Gallery -->
             <div class="wrap-gallery-sidebar flex-w">
-                <a class="item-gallery-sidebar wrap-pic-w" href="{{ asset('assets/images/photo-gallery-01.jpg') }}" data-lightbox="gallery-footer">
-                    <img src="{{ asset('assets/images/photo-gallery-thumb-01.jpg') }}" alt="GALLERY">
+                @foreach ($galleries as $gallery)
+                <a class="item-gallery-sidebar wrap-pic-w" href="{{ Storage::disk('public')->url($gallery->image) }}" data-lightbox="gallery-footer">
+                    <img data-original="{{ Storage::disk('public')->url($gallery->image) }}" class="lazyload" alt="GALLERY">
                 </a>
+                @endforeach
             </div>
-        </div>
+        </div> --}}
     </aside>
 </div>
