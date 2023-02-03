@@ -14,7 +14,7 @@ class ReservationController extends Controller
     {
         $date = strtotime($date);
         $monthAlph = date('F', $date);
-        $lastReservation = Reservation::where('date', date('Y-m-d'))
+        $lastReservation = Reservation::where('date', date('Y-m-d', $date))
             ->orderBy('id', 'desc')
             ->limit(1)->value('code') ?? '000---';
         $reservationCount = (int) substr($lastReservation, -6, 3) + 1;

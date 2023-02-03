@@ -22,7 +22,7 @@ Route::group(['as' => 'members.'], function() {
     
     // Reservation
     Route::grouP(['prefix' => 'reservations'], function() {
-        Route::get('/create', [ReservationController::class, 'create'])
+        Route::get('/', [ReservationController::class, 'create'])
             ->name('reservations.create');
         Route::post('/store', [ReservationController::class, 'store'])
             ->name('reservations.store');
