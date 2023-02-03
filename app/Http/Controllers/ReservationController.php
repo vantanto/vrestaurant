@@ -24,7 +24,7 @@ class ReservationController extends Controller
             date('H').
             str_pad($reservationCount, 3, '0', STR_PAD_LEFT).
             date('d', $date).
-            ($monthAlph == "January" ? "U" : ($monthAlph == "Mach" ? "H" : substr($monthAlph, 2, 1)))
+            ($monthAlph == "January" ? "U" : ($monthAlph == "March" ? "H" : substr($monthAlph, 2, 1)))
         );
     }
 
