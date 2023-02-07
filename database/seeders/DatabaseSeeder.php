@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             TimesSeeder::class,
             GalleriesSeeder::class,
             ChefsSeeder::class,
+            FoodsSeeder::class,
         ]);
 
         File::copyDirectory(public_path('seeders/images'), storage_path('app/public/images'));

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Route;
@@ -42,6 +43,11 @@ Route::group(['as' => 'members.'], function() {
     Route::group(['prefix' => 'abouts'], function() {
         Route::get('/', [AboutController::class, 'index'])
             ->name('abouts.index');
+    });
+
+    Route::group(['prefix' => 'menus'], function() {
+        Route::get('/', [MenuController::class, 'index'])
+            ->name('menus.index');
     });
 });
 

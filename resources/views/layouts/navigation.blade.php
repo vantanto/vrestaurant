@@ -21,7 +21,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="menu.html">Menu</a>
+                                    <a href="{{ route('members.menus.index') }}">Menu</a>
                                 </li>
 
                                 <li>
@@ -71,7 +71,7 @@
             </li>
 
             <li class="t-center m-b-13">
-                <a href="menu.html" class="txt19">Menu</a>
+                <a href="{{ route('members.menus.index') }}" class="txt19">Menu</a>
             </li>
 
             <li class="t-center m-b-13">

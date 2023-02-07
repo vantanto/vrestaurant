@@ -19,10 +19,12 @@ class MenusSeeder extends Seeder
             [
                 'name' => 'Lunch',
                 'image' => 'our-menu-01.jpg',
+                'bg_image' => 'images/header-menu-01.jpg',
             ],
             [
                 'name' => 'Dinner',
                 'image' => 'our-menu-05.jpg',
+                'bg_image' => 'images/header-menu-02.jpg',
             ],
             [
                 'name' => 'Happy Hour',
@@ -40,13 +42,15 @@ class MenusSeeder extends Seeder
                 'name' => 'Dessert',
                 'image' => 'our-menu-16.jpg',
             ],
+            [
+                'name' => 'Main',
+                'image' => 'our-menu-04.jpg',
+            ],
         ];
 
         foreach ($menus as $menu) {
-            Menu::create([
-                'name' => $menu['name'],
-                'image' => 'images/menu/'.$menu['image'],
-            ]);
+            if (isset($menu['image'])) $menu['image'] = $menu['image'];
+            Menu::create($menu);
         }
     }
 }
