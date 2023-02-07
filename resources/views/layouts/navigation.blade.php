@@ -29,7 +29,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="gallery.html">Gallery</a>
+                                    <a href="{{ route('members.galleries.index') }}">Gallery</a>
                                 </li>
 
                                 <li>
@@ -75,7 +75,7 @@
             </li>
 
             <li class="t-center m-b-13">
-                <a href="gallery.html" class="txt19">Gallery</a>
+                <a href="{{ route('members.galleries.index') }}" class="txt19">Gallery</a>
             </li>
 
             <li class="t-center m-b-13">

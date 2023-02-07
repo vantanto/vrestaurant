@@ -15,10 +15,20 @@ class GalleriesSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=1; $i<=12; $i++) {
-            Gallery::create([
-                'image' => 'images/gallery/photo-gallery-'.substr('0'.$i, -2).'.jpg'
-            ]);
+        $categoryGalleries = [
+            Gallery::$Category['1'] => [7, 18, 19, 20],
+            Gallery::$Category['2'] => [1, 3, 4, 5, 6, 8, 14, 16, 17],
+            Gallery::$Category['3'] => [13, 15, 21],
+            Gallery::$Category['4'] => [2, 9, 10],
+            null => [11, 12],
+        ];
+        foreach ($categoryGalleries as $keyCategory => $categoryGallery) {
+            foreach ($categoryGallery as $gallery) {
+                Gallery::create([
+                    'image' => 'images/gallery/photo-gallery-'.substr('0'.$gallery, -2).'.jpg',
+                    'category' => $keyCategory ?: null,
+                ]);
+            }
         }
     }
 }

@@ -68,6 +68,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js" integrity="sha512-jNDtFf7qgU0eH/+Z42FG4fw3w7DM/9zbgNPe3wfJlCylVDTT3IgKW5r92Vy9IHa6U50vyMz5gRByIu4YIXFtaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{ asset('assets/vendor/parallax100/parallax100.js') }}"></script>
     <script src="{{ asset('assets/vendor/countdowntime/countdowntime.js') }}"></script>
+    @stack('scriptsvendor')
 
     <script src="{{ asset('assets/js/pato/slick-custom.js') }}"></script>
     <script src="{{ asset('assets/js/pato/main.js') }}"></script>

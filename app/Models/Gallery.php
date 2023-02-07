@@ -11,6 +11,14 @@ class Gallery extends Model
 
     protected $fillable = [
         'image',
+        'category',
         'active',
+    ];
+
+    public static $Category = [
+        '1' => 'interior',
+        '2' => 'food',
+        '3' => 'events',
+        '4' => 'vip_guests',
     ];
 }

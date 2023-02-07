@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReservationController;
@@ -28,6 +29,12 @@ Route::group(['as' => 'members.'], function() {
             ->name('reservations.store');
         Route::get('/{code}', [ReservationController::class, 'show'])
             ->name('reservations.show');
+    });
+
+    // Gallery
+    Route::group(['prefix' => 'galleries'], function() {
+        Route::get('/', [GalleryController::class, 'index'])
+            ->name('galleries.index');
     });
 });
 
