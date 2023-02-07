@@ -115,4 +115,5 @@ return [
         ],
     ],
 
+    'contact_us' => env('MAIL_CONTACT_US'),
 ];

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\MenuController;
@@ -48,6 +49,13 @@ Route::group(['as' => 'members.'], function() {
     Route::group(['prefix' => 'menus'], function() {
         Route::get('/', [MenuController::class, 'index'])
             ->name('menus.index');
+    });
+
+    Route::group(['prefix' => 'contacts'], function() {
+        Route::get('/', [ContactController::class, 'index'])
+            ->name('contacts.index');
+        Route::post('/send_message', [ContactController::class, 'sendMessage'])
+            ->name('contacts.send_message');
     });
 });
 

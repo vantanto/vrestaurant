@@ -41,7 +41,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="contact.html">Contact</a>
+                                    <a href="{{ route('members.contacts.index') }}">Contact</a>
                                 </li>
                             </ul>
                         </nav>
@@ -87,7 +87,7 @@
             </li>
 
             <li class="t-center m-b-33">
-                <a href="contact.html" class="txt19">Contact</a>
+                <a href="{{ route('members.contacts.index') }}" class="txt19">Contact</a>
             </li>
 
             <li class="t-center">
