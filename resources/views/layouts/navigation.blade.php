@@ -33,7 +33,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="about.html">About</a>
+                                    <a href="{{ route('members.abouts.index') }}">About</a>
                                 </li>
 
                                 <li>
@@ -79,7 +79,7 @@
             </li>
 
             <li class="t-center m-b-13">
-                <a href="about.html" class="txt19">About</a>
+                <a href="{{ route('members.abouts.index') }}" class="txt19">About</a>
             </li>
 
             <li class="t-center m-b-13">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
@@ -35,6 +36,12 @@ Route::group(['as' => 'members.'], function() {
     Route::group(['prefix' => 'galleries'], function() {
         Route::get('/', [GalleryController::class, 'index'])
             ->name('galleries.index');
+    });
+
+    // About
+    Route::group(['prefix' => 'abouts'], function() {
+        Route::get('/', [AboutController::class, 'index'])
+            ->name('abouts.index');
     });
 });
 
