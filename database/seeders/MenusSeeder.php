@@ -49,7 +49,7 @@ class MenusSeeder extends Seeder
         ];
 
         foreach ($menus as $menu) {
-            if (isset($menu['image'])) $menu['image'] = $menu['image'];
+            if (isset($menu['image'])) $menu['image'] = 'images/menu/'.$menu['image'];
             Menu::create($menu);
         }
     }
