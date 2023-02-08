@@ -401,89 +401,33 @@
     <!-- - -->
     <div class="wrap-slick3">
         <div class="slick3">
-            <div class="item-slick3 item1-slick3">
-                <div class="wrap-content-slide3 p-b-50 p-t-50">
-                    <div class="container">
-                        <div class="pic-review size14 bo4 wrap-cir-pic m-l-r-auto animated visible-false" data-appear="zoomIn">
-                            <img data-original="{{ asset('assets/images/avatar-01.jpg') }}" class="lazyload" alt="IGM-AVATAR">
-                        </div>
-
-                        <div class="content-review m-t-33 animated visible-false" data-appear="fadeInUp">
-                            <p class="t-center txt12 size15 m-l-r-auto">
-                                “ We are lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tellus sem, mattis in pre-tium nec, fermentum viverra dui ”
-                            </p>
-
-                            <div class="star-review fs-18 color0 flex-c-m m-t-12">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star p-l-1" aria-hidden="true"></i>
-                                <i class="fa fa-star p-l-1" aria-hidden="true"></i>
-                                <i class="fa fa-star p-l-1" aria-hidden="true"></i>
-                                <i class="fa fa-star p-l-1" aria-hidden="true"></i>
+            @foreach ($reviews as $review)
+                <div class="item-slick3 item1-slick3">
+                    <div class="wrap-content-slide3 p-b-50 p-t-50">
+                        <div class="container">
+                            <div class="pic-review size14 bo4 wrap-cir-pic m-l-r-auto animated visible-false" data-appear="zoomIn">
+                                <img data-original="{{ Storage::disk('public')->url($review->image) }}" class="lazyload" alt="IGM-AVATAR">
                             </div>
 
-                            <div class="more-review txt4 t-center animated visible-false m-t-32" data-appear="fadeInUp">
-                                Marie Simmons ˗ New York
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                            <div class="content-review m-t-33 animated visible-false" data-appear="fadeInUp">
+                                <p class="t-center txt12 size15 m-l-r-auto">
+                                    {{ $review->comment }}
+                                </p>
 
-            <div class="item-slick3 item2-slick3">
-                <div class="wrap-content-slide3 p-b-50 p-t-50">
-                    <div class="container">
-                        <div class="pic-review size14 bo4 wrap-cir-pic m-l-r-auto animated visible-false" data-appear="zoomIn">
-                            <img data-original="{{ asset('assets/images/avatar-04.jpg') }}" class="lazyload" alt="IGM-AVATAR">
-                        </div>
+                                <div class="star-review fs-18 color0 flex-c-m m-t-12">
+                                    @for($i=1; $i<=$review->rating; $i++)
+                                        <i class="fa fa-star @if($i != 1) p-l-1 @endif" aria-hidden="true"></i>
+                                    @endfor
+                                </div>
 
-                        <div class="content-review m-t-33 animated visible-false" data-appear="fadeInUp">
-                            <p class="t-center txt12 size15 m-l-r-auto">
-                                “ We are lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tellus sem, mattis in pre-tium nec, fermentum viverra dui ”
-                            </p>
-
-                            <div class="star-review fs-18 color0 flex-c-m m-t-12">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star p-l-1" aria-hidden="true"></i>
-                                <i class="fa fa-star p-l-1" aria-hidden="true"></i>
-                                <i class="fa fa-star p-l-1" aria-hidden="true"></i>
-                                <i class="fa fa-star p-l-1" aria-hidden="true"></i>
-                            </div>
-
-                            <div class="more-review txt4 t-center animated visible-false m-t-32" data-appear="fadeInUp">
-                                Marie Simmons ˗ New York
+                                <div class="more-review txt4 t-center animated visible-false m-t-32" data-appear="fadeInUp">
+                                    {{ $review->name }} ˗ {{ $review->city }}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="item-slick3 item3-slick3">
-                <div class="wrap-content-slide3 p-b-50 p-t-50">
-                    <div class="container">
-                        <div class="pic-review size14 bo4 wrap-cir-pic m-l-r-auto animated visible-false" data-appear="zoomIn">
-                            <img data-original="{{ asset('assets/images/avatar-05.jpg') }}" class="lazyload" alt="IGM-AVATAR">
-                        </div>
-
-                        <div class="content-review m-t-33 animated visible-false" data-appear="fadeInUp">
-                            <p class="t-center txt12 size15 m-l-r-auto">
-                                “ We are lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tellus sem, mattis in pre-tium nec, fermentum viverra dui ”
-                            </p>
-
-                            <div class="star-review fs-18 color0 flex-c-m m-t-12">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star p-l-1" aria-hidden="true"></i>
-                                <i class="fa fa-star p-l-1" aria-hidden="true"></i>
-                                <i class="fa fa-star p-l-1" aria-hidden="true"></i>
-                                <i class="fa fa-star p-l-1" aria-hidden="true"></i>
-                            </div>
-
-                            <div class="more-review txt4 t-center animated visible-false m-t-32" data-appear="fadeInUp">
-                                Marie Simmons ˗ New York
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
 
         </div>
 
@@ -563,7 +507,7 @@
 </section>
 
 <!-- Sign up -->
-<div class="section-signup bg1-pattern p-t-85 p-b-85">
+{{-- <div class="section-signup bg1-pattern p-t-85 p-b-85">
     <form class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5">
         <span class="txt5 m-10">
             Specials Sign up
@@ -579,5 +523,5 @@
             Sign-up
         </button>
     </form>
-</div>
+</div> --}}
 @endsection

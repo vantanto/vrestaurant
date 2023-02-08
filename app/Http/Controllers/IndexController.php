@@ -7,6 +7,7 @@ use App\Models\Banner;
 use App\Models\Blog;
 use App\Models\Event;
 use App\Models\Menu;
+use App\Models\Review;
 use App\Models\Time;
 use Illuminate\Http\Request;
 
@@ -36,6 +37,9 @@ class IndexController extends Controller
         $times = Time::where('active', true)
             ->orderBy('time')
             ->get();
+        $reviews = Review::orderBy('id', 'desc')
+            ->limit(3)
+            ->get();
         $last_blogs = Blog::select('title', 'slug', 'published', 'description_short', 'bg_image')
             ->where('published', '<=', date('Y-m-d'))
             ->orderBy('published', 'desc')
@@ -48,6 +52,7 @@ class IndexController extends Controller
             'menus',
             'events_upcomings',
             'times',
+            'reviews',
             'last_blogs'
         ));
     }

@@ -29,7 +29,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="{{ route('members.galleries.index') }}">Gallery</a>
+                                    <a href="{{ route('members.reservations.create') }}">Gallery</a>
                                 </li>
 
                                 <li>

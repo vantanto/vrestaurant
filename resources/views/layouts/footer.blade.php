@@ -44,47 +44,35 @@
             <div class="col-sm-6 col-md-4 p-t-50">
                 <!-- - -->
                 <h4 class="txt13 m-b-33">
-                    Latest twitter
+                    About
                 </h4>
 
                 <div class="m-b-25">
-                    <span class="fs-13 color2 m-r-5">
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                    </span>
-                    <a href="#" class="txt15">
-                        @colorlib
-                    </a>
+                    <ul class="m-b-70">
+                        <li class="txt14 m-b-14">
+                            <a href="{{ route('members.abouts.index') }}">Menu</a>
+                        </li>
 
-                    <p class="txt14 m-b-18">
-                        Activello is a good option. It has a slider built into that displays the featured image in the slider.
-                        <a href="#" class="txt15">
-                            https://buff.ly/2zaSfAQ
-                        </a>
-                    </p>
+                        <li class="txt14 m-b-14">
+                            <a href="{{ route('members.reservations.create') }}">Reservation</a>
+                        </li>
 
-                    <span class="txt16">
-                        21 Dec 2017
-                    </span>
-                </div>
+                        <li class="txt14 m-b-14">
+                            <a href="{{ route('members.reservations.create') }}">Gallery</a>
+                        </li>
 
-                <div>
-                    <span class="fs-13 color2 m-r-5">
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                    </span>
-                    <a href="#" class="txt15">
-                        @colorlib
-                    </a>
+                        <li class="txt14 m-b-14">
+                            <a href="{{ route('members.abouts.index') }}">About Us</a>
+                        </li>
+    
+                        <li class="txt14 m-b-14">
+                            <a href="{{ route('members.contacts.index') }}">Contact Us</a>
+                        </li>
 
-                    <p class="txt14 m-b-18">
-                        Activello is a good option. It has a slider built into that displays
-                        <a href="#" class="txt15">
-                            https://buff.ly/2zaSfAQ
-                        </a>
-                    </p>
-
-                    <span class="txt16">
-                        21 Dec 2017
-                    </span>
+                        <li class="txt14 m-b-14">
+                            <a href="{{ route('members.blogs.index') }}">Blog</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
