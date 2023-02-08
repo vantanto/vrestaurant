@@ -37,7 +37,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="blog.html">Blog</a>
+                                    <a href="{{ route('members.blogs.index') }}">Blog</a>
                                 </li>
 
                                 <li>
@@ -83,7 +83,7 @@
             </li>
 
             <li class="t-center m-b-13">
-                <a href="blog.html" class="txt19">Blog</a>
+                <a href="{{ route('members.blogs.index') }}" class="txt19">Blog</a>
             </li>
 
             <li class="t-center m-b-33">

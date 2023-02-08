@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('bg_image')->nullable();
             $table->boolean('active')->default(true);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

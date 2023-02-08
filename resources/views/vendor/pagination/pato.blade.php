@@ -1,5 +1,6 @@
+@php $align = $align ?? 'l'; @endphp
 @if ($paginator->hasPages())
-    <nav role="navigation" aria-label="{{ __('Pagination Navigation') }}" class="pagination flex-c-m flex-w p-l-15 p-r-15 m-t-24 m-b-50">
+    <nav role="navigation" aria-label="{{ __('Pagination Navigation') }}" class="pagination flex-{{ $align }}-m flex-w @if($align != 'l') p-l-15 @endif @if($align != 'r') p-r-15 @endif m-t-24 m-b-50">
         {{-- Previous Page Link --}}
         @if (!$paginator->onFirstPage())
             <a href="{{ $paginator->previousPageUrl() }}" rel="prev" class="item-pagination flex-c-m trans-0-4" aria-label="{{ __('pagination.previous') }}">

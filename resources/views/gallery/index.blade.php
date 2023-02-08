@@ -36,6 +36,6 @@
         @endforeach
     </div>
 
-    {{ $galleries->links('vendor.pagination.pato') }}
+    {{ $galleries->links('vendor.pagination.pato', ['align' => 'c']) }}
 </div>
 @endsection

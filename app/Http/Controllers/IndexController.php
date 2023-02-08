@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\Banner;
+use App\Models\Blog;
 use App\Models\Event;
 use App\Models\Menu;
 use App\Models\Time;
@@ -35,13 +36,19 @@ class IndexController extends Controller
         $times = Time::where('active', true)
             ->orderBy('time')
             ->get();
+        $last_blogs = Blog::select('title', 'slug', 'published', 'description_short', 'bg_image')
+            ->where('published', '<=', date('Y-m-d'))
+            ->orderBy('published', 'desc')
+            ->limit(3)
+            ->get();
         return view('index', compact(
             'banners', 
             'about_main', 
             'abouts', 
             'menus',
             'events_upcomings',
-            'times'
+            'times',
+            'last_blogs'
         ));
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\IndexController;
@@ -56,6 +57,13 @@ Route::group(['as' => 'members.'], function() {
             ->name('contacts.index');
         Route::post('/send_message', [ContactController::class, 'sendMessage'])
             ->name('contacts.send_message');
+    });
+
+    Route::group(['prefix' => 'blogs'], function() {
+        Route::get('/', [BlogController::class, 'index'])
+            ->name('blogs.index');
+        Route::get('/{slug}', [BlogController::class, 'show'])
+            ->name('blogs.show');
     });
 });
 

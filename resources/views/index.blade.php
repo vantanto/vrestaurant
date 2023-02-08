@@ -526,95 +526,37 @@
         </div>
 
         <div class="row">
-            <div class="col-md-4 p-t-30">
-                <!-- Block1 -->
-                <div class="blo1">
-                    <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom pos-relative">
-                        <a href="blog-detail.html"><img data-original="{{ asset('assets/images/blog-01.jpg') }}" class="lazyload" alt="IMG-INTRO"></a>
+            @foreach ($last_blogs as $last_blog)
+                <div class="col-md-4 p-t-30">
+                    <!-- Block1 -->
+                    <div class="blo1">
+                        <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom pos-relative">
+                            <a href="{{ route('members.blogs.show', $last_blog->slug) }}"><img data-original="{{ Storage::disk('public')->url($last_blog->bg_image) }}" class="lazyload" alt="IMG-INTRO"></a>
 
-                        <div class="time-blog">
-                            21 Dec 2017
+                            <div class="time-blog">
+                                {{ date('d M Y', strtotime($last_blog->published)) }}
+                            </div>
+                        </div>
+
+                        <div class="wrap-text-blo1 p-t-35">
+                            <a href="{{ route('members.blogs.show', $last_blog->slug) }}">
+                                <h4 class="txt5 color0-hov trans-0-4 m-b-13">
+                                    {{ $last_blog->title }}
+                                </h4>
+                            </a>
+
+                            <p class="m-b-20">
+                                {{ $last_blog->description_short }}
+                            </p>
+
+                            <a href="{{ route('members.blogs.show', $last_blog->slug) }}" class="txt4">
+                                Continue Reading
+                                <i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
+                            </a>
                         </div>
                     </div>
-
-                    <div class="wrap-text-blo1 p-t-35">
-                        <a href="blog-detail.html">
-                            <h4 class="txt5 color0-hov trans-0-4 m-b-13">
-                                Best Places for Wine
-                            </h4>
-                        </a>
-
-                        <p class="m-b-20">
-                            Phasellus lorem enim, luctus ut velit eget, con-vallis egestas eros.
-                        </p>
-
-                        <a href="blog-detail.html" class="txt4">
-                            Continue Reading
-                            <i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
-                        </a>
-                    </div>
                 </div>
-            </div>
-
-            <div class="col-md-4 p-t-30">
-                <!-- Block1 -->
-                <div class="blo1">
-                    <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom pos-relative">
-                        <a href="blog-detail.html"><img data-original="{{ asset('assets/images/blog-02.jpg') }}" class="lazyload" alt="IMG-INTRO"></a>
-
-                        <div class="time-blog">
-                            15 Dec 2017
-                        </div>
-                    </div>
-
-                    <div class="wrap-text-blo1 p-t-35">
-                        <a href="blog-detail.html">
-                            <h4 class="txt5 color0-hov trans-0-4 m-b-13">
-                                Eggs and Cheese
-                            </h4>
-                        </a>
-
-                        <p class="m-b-20">
-                            Duis elementum, risus sit amet lobortis nunc justo condimentum ligula, vitae feugiat
-                        </p>
-
-                        <a href="blog-detail.html" class="txt4">
-                            Continue Reading
-                            <i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 p-t-30">
-                <!-- Block1 -->
-                <div class="blo1">
-                    <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom pos-relative">
-                        <a href="blog-detail.html"><img data-original="{{ asset('assets/images/blog-03.jpg') }}" class="lazyload" alt="IMG-INTRO"></a>
-
-                        <div class="time-blog">
-                            12 Dec 2017
-                        </div>
-                    </div>
-
-                    <div class="wrap-text-blo1 p-t-35">
-                        <a href="blog-detail.html">
-                            <h4 class="txt5 color0-hov trans-0-4 m-b-13">
-                                Style the Wedding Party
-                            </h4>
-                        </a>
-
-                        <p class="m-b-20">
-                            Sed ornare ligula eget tortor tempor, quis porta tellus dictum.
-                        </p>
-
-                        <a href="blog-detail.html" class="txt4">
-                            Continue Reading
-                            <i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
 
         </div>
     </div>

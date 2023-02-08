@@ -111,7 +111,7 @@
         <div class="container">
             <div class="flex-sb-m flex-w p-t-22 p-b-22">
                 <div class="p-t-5 p-b-5">
-                    <a href="https://github.com/vantanto" class="fs-15 c-white"><i class="fa fa-github m-l-18" aria-hidden="true"></i></a>
+                    <a href="https://github.com/vantanto" class="fs-15 c-white"><i class="fa fa-github" aria-hidden="true"></i></a>
                     <a href="https://facebook.com/vantanto.99" class="fs-15 c-white"><i class="fa fa-facebook m-l-18" aria-hidden="true"></i></a>
                 </div>
 

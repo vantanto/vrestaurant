@@ -6,19 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Menu extends Model
+class CategoryBlog extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'name',
-        'image',
-        'bg_image',
-        'active',
     ];
 
-    public function foods()
+    public function blogs()
     {
-        return $this->hasMany(Food::class);
+        return $this->hasMany(Blog::class);
     }
 }
