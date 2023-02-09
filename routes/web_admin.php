@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +17,13 @@ use App\Http\Controllers\Admin\DashboardController;
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/', [DashboardController::class, 'index'])
         ->name('dashboard');
+
+    Route::group(['prefix' => 'profiles'], function() {
+        Route::get('/', [ProfileController::class, 'edit'])
+            ->name('profiles.edit');
+        Route::patch('/', [ProfileController::class, 'update'])
+            ->name('profiles.update');
+        // Route::delete('/', [ProfileController::class, 'destroy'])
+        //     ->name('profiles.destroy');
+    });
 });

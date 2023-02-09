@@ -24,7 +24,7 @@
                     {{ Auth::user()->name }}
                 </div>
                 <div class="dropdown-header bg-light py-2"><strong>Settings</strong></div>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="{{ route('profiles.edit') }}">
                     <i class="c-icon mr-2 fa fa-user-o"></i> Profile
                 </a>
                 <form method="post" action="{{ route('logout') }}">
