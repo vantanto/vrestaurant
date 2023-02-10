@@ -4,69 +4,46 @@
 <section class="section-slide">
     <div class="wrap-slick1">
         <div class="slick1">
-            @isset($banners[0])
-            <div class="item-slick1 item1-slick1 lazyload" data-original="{{ Storage::disk('public')->url($banners[0]->image) }}">
-                <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
-                    <span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="fadeInDown">
-                        Welcome to
-                    </span>
+            @php 
+                $banner_effects = [
+                    [
+                        'title' => 'fadeInDown', 
+                        'subtitle' => 'fadeInUp', 
+                        'text' => 'zoomIn'
+                    ],
+                    [
+                        'title' => 'rollIn', 
+                        'subtitle' => 'lightSpeedIn', 
+                        'text' => 'slideInUp'
+                    ],
+                    [
+                        'title' => 'rotateInDownLeft', 
+                        'subtitle' => 'fadeInUp', 
+                        'text' => 'zoomIn'
+                    ],
+                ];
+            @endphp
+            @foreach ($banners as $banner)
+                @php $banner_eff_idx = $loop->index % count($banner_effects); @endphp
+                <div class="item-slick1 item{{ $banner_eff_idx }}-slick1 lazyload" data-original="{{ Storage::disk('public')->url($banner->image) }}">
+                    <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
+                        <span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="{{ $banner_effects[$banner_eff_idx]['title'] }}">
+                            Welcome to
+                        </span>
 
-                    <h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="fadeInUp">
-                        {{ config('app.name') }}
-                    </h2>
+                        <h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="{{ $banner_effects[$banner_eff_idx]['subtitle'] }}">
+                            {{ config('app.name') }}
+                        </h2>
 
-                    <div class="wrap-btn-slide1 animated visible-false" data-appear="zoomIn">
-                        <!-- Button1 -->
-                        <a href="menu.html" class="btn1 flex-c-m size1 txt3 trans-0-4">
-                            Look Menu
-                        </a>
+                        <div class="wrap-btn-slide1 animated visible-false" data-appear="{{ $banner_effects[$banner_eff_idx]['text'] }}">
+                            <!-- Button1 -->
+                            <a href="menu.html" class="btn1 flex-c-m size1 txt3 trans-0-4">
+                                Look Menu
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            @endisset
-
-            @isset($banners[1])
-            <div class="item-slick1 item2-slick1 lazyload" data-original="{{ Storage::disk('public')->url($banners[1]->image) }}">
-                <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
-                    <span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="rollIn">
-                        Welcome to
-                    </span>
-
-                    <h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="lightSpeedIn">
-                        {{ config('app.name') }}
-                    </h2>
-
-                    <div class="wrap-btn-slide1 animated visible-false" data-appear="slideInUp">
-                        <!-- Button1 -->
-                        <a href="menu.html" class="btn1 flex-c-m size1 txt3 trans-0-4">
-                            Look Menu
-                        </a>
-                    </div>
-                </div>
-            </div>
-            @endisset
-
-            @isset($banners[2])
-            <div class="item-slick1 item3-slick1 lazyload" data-original="{{ Storage::disk('public')->url($banners[2]->image) }}">
-                <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
-                    <span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="rotateInDownLeft">
-                        Welcome to
-                    </span>
-
-                    <h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="rotateInUpRight">
-                        {{ config('app.name') }}
-                    </h2>
-
-                    <div class="wrap-btn-slide1 animated visible-false" data-appear="rotateIn">
-                        <!-- Button1 -->
-                        <a href="menu.html" class="btn1 flex-c-m size1 txt3 trans-0-4">
-                            Look Menu
-                        </a>
-                    </div>
-                </div>
-            </div>
-            @endisset
-
+            @endforeach
         </div>
 
         <div class="wrap-slick1-dots"></div>

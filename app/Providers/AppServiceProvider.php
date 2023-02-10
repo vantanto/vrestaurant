@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Gallery;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View;
 
@@ -31,6 +32,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Paginator::useBootstrapFour();
     }
 }

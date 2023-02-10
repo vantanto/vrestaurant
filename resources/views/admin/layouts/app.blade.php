@@ -13,13 +13,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="url-current" content="{{ url()->current() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="{{ asset('assets/css/coreui/style.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 
     @stack('styles')
 </head>
@@ -48,10 +49,27 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js" integrity="sha512-bj8HE1pKwchoYNizhD57Vl6B9ExS25Hw21WxoQEzGapNNjLZ0+kgRMEn9KSCD+igbE9+/dJO7x6ZhLrdaQ5P3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.7.1/sweetalert2.all.min.js" integrity="sha512-KfbhdnXs2iEeelTjRJ+QWO9veR3rm6BocSoNoZ4bpPIZCsE1ysIRHwV80yazSHKmX99DM0nzjoCZjsjNDE628w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @stack('scriptsvendor')
     
     <script src="{{ asset('assets/js/coreui/coreui.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/coreui/coreui-utils.js') }}"></script>
+    <script src="{{ asset('assets/js/submitForm.js') }}"></script>
+    <script src="{{ asset('assets/js/custom.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Swal Success
+            @if(session('success'))
+                Swal.fire('Success!', "{{ session('success') }}", 'success');
+            @endif
+            
+            // Swal Error
+            @if(session('error'))
+                Swal.fire('Error!', "{{ session('error') }}", 'error');
+            @endif
+        });
+    </script>
     
     @stack('scripts')
 </body>

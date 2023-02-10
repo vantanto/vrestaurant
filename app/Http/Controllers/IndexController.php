@@ -16,7 +16,6 @@ class IndexController extends Controller
     public function index(Request $request)
     {
         $banners = Banner::where('active', true)
-            ->limit(3)
             ->get();
         $about_main = About::select('title', 'description_short', 'image')
             ->where('is_main', true)

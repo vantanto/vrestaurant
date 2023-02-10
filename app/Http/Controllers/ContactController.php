@@ -23,6 +23,6 @@ class ContactController extends Controller
         ]);
 
         Mail::to(config('mail.contact_us'))->send(new ContactUs($validated));
-        return redirect()->route('members.contacts.index')->with('modal-success', 'Mail Successfully Sended.');
+        return redirect()->route('members.contacts.index')->with('success', 'Mail Successfully Sended.');
     }
 }

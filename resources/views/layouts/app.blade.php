@@ -81,9 +81,14 @@
                 $('.lazyload').lazyload();
             });
 
-            // Modal Success
-            @if(session('modal-success'))
-                Swal.fire('Success!', "{{ session('modal-success') }}", 'success');
+            // Swal Success
+            @if(session('success'))
+                Swal.fire('Success!', "{{ session('success') }}", 'success');
+            @endif
+            
+            // Swal Error
+            @if(session('error'))
+                Swal.fire('Error!', "{{ session('error') }}", 'error');
             @endif
         });
     </script>

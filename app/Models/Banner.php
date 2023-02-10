@@ -13,4 +13,6 @@ class Banner extends Model
         'image',
         'active',
     ];
+
+    public static $ImagePath = 'images/banner/';
 }
