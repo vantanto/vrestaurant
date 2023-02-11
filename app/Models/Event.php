@@ -18,4 +18,6 @@ class Event extends Model
         'bg_image',
         'active',
     ];
+
+    public static $ImagePath = 'images/event/';
 }
