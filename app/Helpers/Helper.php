@@ -20,7 +20,9 @@ class Helper
 
     public static function fileDelete($fullPath, $disk = 'public')
     {
-        Storage::disk($disk)->delete($fullPath);
+        if ($fullPath != null) {
+            Storage::disk($disk)->delete($fullPath);
+        }
     }
 
     public static function fileUpdate($oldFullPath, $file, $filePath, $filename = null, $disk = 'public')

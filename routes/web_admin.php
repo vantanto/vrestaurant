@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProfileController;
 
 /*
@@ -48,6 +49,21 @@ Route::group(['middleware' => ['auth']], function () {
             ->name('banners.update');
         Route::post('/destroy/{id}', [BannerController::class, 'destroy'])
             ->name('banners.destroy');
+    });
+
+    Route::group(['prefix' => 'menus'], function() {
+        Route::get('/', [MenuController::class, 'index'])
+            ->name('menus.index');
+        Route::get('/create', [MenuController::class, 'create'])
+            ->name('menus.create');
+        Route::post('/store', [MenuController::class, 'store'])
+            ->name('menus.store');
+        Route::get('/edit/{id}', [MenuController::class, 'edit'])
+            ->name('menus.edit');
+        Route::post('/update/{id}', [MenuController::class, 'update'])
+            ->name('menus.update');
+        Route::post('/destroy/{id}', [MenuController::class, 'destroy'])
+            ->name('menus.destroy');
     });
 
     Route::group(['prefix' => 'profiles'], function() {

@@ -17,6 +17,8 @@ class Menu extends Model
         'active',
     ];
 
+    public static $ImagePath = 'images/menu/';
+
     public function foods()
     {
         return $this->hasMany(Food::class);

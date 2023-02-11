@@ -9,7 +9,7 @@
                 Dashboard
             </a>
         </li>
-        <li class="c-sidebar-nav-title">Content</li>
+        <li class="c-sidebar-nav-title">Manage</li>
         <li class="c-sidebar-nav-item c-sidebar-nav-dropdown 
             @if(Request::routeIs(['banners.*', 'abouts.*'])) c-show @endif">
             <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
@@ -23,12 +23,25 @@
                         About
                     </a>
                 </li>
-            </ul>
-            <ul class="c-sidebar-nav-dropdown-items">
                 <li class="c-sidebar-nav-item">
                     <a class="c-sidebar-nav-link @if(Request::routeIs('banners.*')) c-active @endif" href="{{ route('banners.index') }}">
                         <span class="c-sidebar-nav-icon"></span>
                         Banner
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="c-sidebar-nav-item c-sidebar-nav-dropdown 
+            @if(Request::routeIs(['menus.*'])) c-show @endif">
+            <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
+                <i class="c-sidebar-nav-icon fa fa-th-list"></i>
+                Master Data
+            </a>
+            <ul class="c-sidebar-nav-dropdown-items">
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link @if(Request::routeIs('menus.*')) c-active @endif" href="{{ route('menus.index') }}">
+                        <span class="c-sidebar-nav-icon"></span>
+                        Menu
                     </a>
                 </li>
             </ul>
