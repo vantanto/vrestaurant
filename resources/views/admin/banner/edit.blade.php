@@ -19,8 +19,8 @@
                             <div class="form-group">
                                 <label for="active">Active</label>
                                 <div class="form-control-plaintext py-0">
-                                    <label class="c-switch c-switch-pill c-switch-primary mb-0">
-                                        <input class="c-switch-input" type="checkbox" name="active" @if($banner->active) checked="" @endif><span class="c-switch-slider"></span>
+                                    <label class="c-switch c-switch-pill c-switch-success mb-0">
+                                        <input type="checkbox" id="active" name="active" @if($banner->active) checked="" @endif value="1" class="c-switch-input" ><span class="c-switch-slider"></span>
                                     </label>
                                 </div>
                             </div>

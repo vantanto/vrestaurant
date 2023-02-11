@@ -18,8 +18,8 @@
                             <div class="form-group">
                                 <label for="active">Active</label>
                                 <div class="form-control-plaintext py-0">
-                                    <label class="c-switch c-switch-pill c-switch-primary mb-0">
-                                        <input class="c-switch-input" type="checkbox" name="active" checked=""><span class="c-switch-slider"></span>
+                                    <label class="c-switch c-switch-pill c-switch-success mb-0">
+                                        <input type="checkbox" id="active" name="active" checked="" value="1" class="c-switch-input" ><span class="c-switch-slider"></span>
                                     </label>
                                 </div>
                             </div>

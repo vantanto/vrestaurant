@@ -11,10 +11,13 @@ class About extends Model
 
     protected $fillable = [
         'title',
+        'subtitle',
         'description_short',
         'description',
         'image',
         'is_main',
         'active',
     ];
+
+    public static $ImagePath = 'images/about/';
 }

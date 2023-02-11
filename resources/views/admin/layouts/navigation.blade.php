@@ -11,11 +11,19 @@
         </li>
         <li class="c-sidebar-nav-title">Content</li>
         <li class="c-sidebar-nav-item c-sidebar-nav-dropdown 
-            @if(Request::routeIs(['banners.*'])) c-show @endif">
+            @if(Request::routeIs(['banners.*', 'abouts.*'])) c-show @endif">
             <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
                 <i class="c-sidebar-nav-icon fa fa-picture-o"></i>
                 Content
             </a>
+            <ul class="c-sidebar-nav-dropdown-items">
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link @if(Request::routeIs('abouts.*')) c-active @endif" href="{{ route('abouts.index') }}">
+                        <span class="c-sidebar-nav-icon"></span>
+                        About
+                    </a>
+                </li>
+            </ul>
             <ul class="c-sidebar-nav-dropdown-items">
                 <li class="c-sidebar-nav-item">
                     <a class="c-sidebar-nav-link @if(Request::routeIs('banners.*')) c-active @endif" href="{{ route('banners.index') }}">
