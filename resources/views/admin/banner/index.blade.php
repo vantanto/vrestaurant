@@ -48,15 +48,11 @@
                             <img src="{{ Storage::disk('public')->url($banner->image) }}" class="img-fluid" style="max-height: 150px;">
                         </td>
                         <td>
-                            @if ($banner->active == 1)
-                                <span class="badge badge-success">Active</span>
-                            @else
-                                <span class="badge badge-secondary">Deactive</span>
-                            @endif
+                            <x-badge-active :active="$banner->active" />
                         </td>
                         <td>
-                            <a href="{{ route('banners.edit', $banner->id) }}" class="btn btn-warning">Edit</a>
-                            <form method="post" action="{{ route('banners.destroy', $banner->id) }}" class="d-inline">
+                            <a href="{{ route('banners.edit', $banner->id) }}" class="btn btn-warning mb-1">Edit</a>
+                            <form method="post" action="{{ route('banners.destroy', $banner->id) }}" class="d-inline mb-1">
                                 @csrf
                                 <button type="button" class="btn btn-danger" onclick="confirmSwalAlert(this)">Delete</button>
                             </form>

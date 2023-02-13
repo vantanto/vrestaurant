@@ -53,6 +53,15 @@ class EventController extends Controller
         }
     }
 
+    public function detail(Request $request)
+    {
+        $event = Event::find($request->id);
+        if ($event) {
+            return response()->json(['status' => 'success', 'msg' => 'Data Found.', 'data' => $event]);
+        }
+        return response()->json(['status' => 'error', 'msg' => 'No Data Found.'], 404);
+    }
+
     public function edit(Request $request, $id)
     {
         $event = Event::findOrFail($id);

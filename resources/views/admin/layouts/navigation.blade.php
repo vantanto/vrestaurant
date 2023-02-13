@@ -10,6 +10,12 @@
             </a>
         </li>
         <li class="c-sidebar-nav-title">Manage</li>
+        <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link @if(Request::routeIs('reservations.*')) c-active @endif" href="{{ route('reservations.index') }}">
+                <i class="c-sidebar-nav-icon fa fa-ticket"></i>
+                Reservation
+            </a>
+        </li>
         <li class="c-sidebar-nav-item c-sidebar-nav-dropdown 
             @if(Request::routeIs(['banners.*', 'abouts.*'])) c-show @endif">
             <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">

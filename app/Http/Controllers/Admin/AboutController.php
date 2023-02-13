@@ -56,6 +56,12 @@ class AboutController extends Controller
         }
     }
 
+    public function show(Request $request, $id)
+    {
+        $about = About::findOrFail($id);
+        return view('admin.about.show', compact('about'));
+    }
+
     public function edit(Request $request, $id)
     {
         $about = About::findOrFail($id);

@@ -26,7 +26,7 @@ class ReservationStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'date' => 'required|date|after:tommorrow',
+            'date' => 'required|date_format:d/m/Y|after:tommorrow',
             'time' => 'required|exists:times,time',
             'people' => 'required|numeric|min:1|max:12',
             'name' => 'required|string',

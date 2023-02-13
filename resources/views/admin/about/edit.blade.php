@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 @section('content')
 <div class="row">
-    <div class="col-sm-8">
+    <div class="col-md-8">
         <div class="card">
             <div class="card-header"><strong>Edit About</strong></div>
             <div class="card-body">
@@ -9,13 +9,13 @@
                 <form id="mainForm" method="post" action="{{ route('abouts.update', $about->id) }}">
                     @csrf
                     <div class="row">
-                        <div class="col-sm-8">
+                        <div class="col-md-8">
                             <div class="form-group">
                                 <label for="image">Image</label>
                                 <input type="file" id="image" name="image" class="form-control-file" accept=".png, .jpg, .jpeg">
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-md-4">
                             <div class="row">
                                 <div class="form-group mr-3">
                                     <label for="active">Active</label>
@@ -37,11 +37,11 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-sm-6">
+                        <div class="form-group col-md-6">
                             <label for="title">Title</label>
                             <input type="text" id="title" name="title" class="form-control" required value="{{ $about->title }}">
                         </div>
-                        <div class="form-group col-sm-6">
+                        <div class="form-group col-md-6">
                             <label for="subtitle">Subtitle (Optional)</label>
                             <input type="text" id="subtitle" name="subtitle" class="form-control" value="{{ $about->subtitle }}">
                         </div>

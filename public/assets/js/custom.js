@@ -1,9 +1,9 @@
-function confirmSwalAlert(element, description = null) {
+function confirmSwalAlert(element, title = null, description = null) {
     event.preventDefault();
 	var form = element.closest('form'); // storing the form
 	Swal.fire({
-        title: "Are you sure?",
-        text: description ?? "Once deleted, you will not be able to recover this data!",
+        title: title ?? "Are you sure?",
+        html: description ?? "Once deleted, you will not be able to recover this data!",
         icon: "warning",
         buttons: true,
         showCancelButton: true,

@@ -45,7 +45,6 @@ class ReservationController extends Controller
             'phone',
             'email',
             'people',
-            'status', 
         ]));
         $reservation->date = Carbon::createFromFormat('d/m/Y', $request->date)->toDateString();
         $reservation->code = $this->generateCode($reservation->date);

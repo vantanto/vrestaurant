@@ -34,15 +34,12 @@
                             {{ $about->subtitle }}
                         </td>
                         <td>
-                            @if ($about->active == 1)
-                                <span class="badge badge-success">Active</span>
-                            @else
-                                <span class="badge badge-secondary">Deactive</span>
-                            @endif
+                            <x-badge-active :active="$about->active" />
                         </td>
                         <td>
-                            <a href="{{ route('abouts.edit', $about->id) }}" class="btn btn-warning">Edit</a>
-                            <form method="post" action="{{ route('abouts.destroy', $about->id) }}" class="d-inline">
+                            <a href="{{ route('abouts.show', $about->id) }}" class="btn btn-info mb-1">Detail</a>
+                            <a href="{{ route('abouts.edit', $about->id) }}" class="btn btn-warning mb-1">Edit</a>
+                            <form method="post" action="{{ route('abouts.destroy', $about->id) }}" class="d-inline mb-1">
                                 @csrf
                                 <button type="button" class="btn btn-danger" onclick="confirmSwalAlert(this)">Delete</button>
                             </form>

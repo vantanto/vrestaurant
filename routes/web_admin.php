@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,8 @@ Route::group(['middleware' => ['auth']], function () {
             ->name('abouts.create');
         Route::post('/store', [AboutController::class, 'store'])
             ->name('abouts.store');
+        Route::get('/show/{id}', [AboutController::class, 'show'])
+            ->name('abouts.show');
         Route::get('/edit/{id}', [AboutController::class, 'edit'])
             ->name('abouts.edit');
         Route::post('/update/{id}', [AboutController::class, 'update'])
@@ -59,6 +62,8 @@ Route::group(['middleware' => ['auth']], function () {
             ->name('events.create');
         Route::post('/store', [EventController::class, 'store'])
             ->name('events.store');
+        Route::get('/detail', [EventController::class, 'detail'])
+            ->name('events.detail');
         Route::get('/edit/{id}', [EventController::class, 'edit'])
             ->name('events.edit');
         Route::post('/update/{id}', [EventController::class, 'update'])
@@ -80,6 +85,25 @@ Route::group(['middleware' => ['auth']], function () {
             ->name('menus.update');
         Route::post('/destroy/{id}', [MenuController::class, 'destroy'])
             ->name('menus.destroy');
+    });
+
+    Route::group(['prefix' => 'reservations'], function() {
+        Route::get('/', [ReservationController::class, 'index'])
+            ->name('reservations.index');
+        Route::get('/create', [ReservationController::class, 'create'])
+            ->name('reservations.create');
+        Route::post('/store', [ReservationController::class, 'store'])
+            ->name('reservations.store');
+        Route::get('/show/{code}', [ReservationController::class, 'show'])
+            ->name('reservations.show');
+        Route::get('/edit/{code}', [ReservationController::class, 'edit'])
+            ->name('reservations.edit');
+        Route::post('/update/{code}', [ReservationController::class, 'update'])
+            ->name('reservations.update');
+        Route::post('/uodate_status/{code}', [ReservationController::class, 'updateStatus'])
+            ->name('reservations.update.status');
+        Route::post('/destroy/{code}', [ReservationController::class, 'destroy'])
+            ->name('reservations.destroy');
     });
 
     Route::group(['prefix' => 'profiles'], function() {
