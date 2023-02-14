@@ -40,7 +40,7 @@ class AboutController extends Controller
     {
         $validator = \Validator::make($request->all(), [
             'title' => 'required|string',
-            'subtitle' => 'sometimes|string',
+            'subtitle' => 'nullable|string',
             'description_short' => 'required|string',
             'description' => 'required|string',
             'image' => 'required|image',
@@ -85,7 +85,7 @@ class AboutController extends Controller
         $about = About::findOrFail($id);
         $validator = \Validator::make($request->all(), [
             'title' => 'required|string',
-            'subtitle' => 'sometimes|string',
+            'subtitle' => 'nullable|string',
             'description_short' => 'required|string',
             'description' => 'required|string',
             'image' => 'sometimes|image',

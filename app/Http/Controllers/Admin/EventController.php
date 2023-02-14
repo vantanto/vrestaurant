@@ -40,8 +40,8 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $validator = \Validator::make($request->all(), [
-            'date_start' => 'sometimes|date',
-            'date_end' => 'sometimes|date',
+            'date_start' => 'nullable|date',
+            'date_end' => 'nullable|date',
             'title' => 'required|string',
             'description' => 'required|string',
             'image' => 'sometimes|image',
@@ -86,8 +86,8 @@ class EventController extends Controller
     {
         $event = Event::findOrFail($id);
         $validator = \Validator::make($request->all(), [
-            'date_start' => 'sometimes|date',
-            'date_end' => 'sometimes|date',
+            'date_start' => 'nullable|date',
+            'date_end' => 'nullable|date',
             'title' => 'required|string',
             'description' => 'required|string',
             'image' => 'sometimes|image',

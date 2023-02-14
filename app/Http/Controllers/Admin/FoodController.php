@@ -47,7 +47,7 @@ class FoodController extends Controller
         $validator = \Validator::make($request->all(), [
             'name' => 'required|string',
             'price' => 'required|string',
-            'description' => 'sometimes|string',
+            'description' => 'nullable|string',
             'image' => 'nullable|image',
             'menu' => 'nullable|exists:menus,id',
         ]);
@@ -93,7 +93,7 @@ class FoodController extends Controller
         $validator = \Validator::make($request->all(), [
             'name' => 'required|string',
             'price' => 'required|string',
-            'description' => 'sometimes|string',
+            'description' => 'nullable|string',
             'image' => 'nullable|image',
             'menu_id' => 'nullable|exists:menus',
         ]);
