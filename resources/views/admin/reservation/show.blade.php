@@ -9,7 +9,7 @@
                 <table class="table table-sm">
                     <tr>
                         <td>
-                            {{ date('d/m/Y', strtotime($reservation->date)) }} 
+                            {{ date('l, d/m/Y', strtotime($reservation->date)) }} 
                             {{ date('H:i', strtotime($reservation->time)) }}
                         </td>
                         <td>

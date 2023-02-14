@@ -68,7 +68,7 @@
                             </a>
                         </td>
                         <td>
-                            {{ date('d/m/Y', strtotime($reservation->date)) }} 
+                            {{ date('D, d/m/Y', strtotime($reservation->date)) }} 
                             {{ date('H:i', strtotime($reservation->time)) }}
                         </td>
                         <td>
