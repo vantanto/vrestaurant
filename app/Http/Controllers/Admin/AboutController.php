@@ -14,8 +14,20 @@ class AboutController extends Controller
     {
         $abouts = About::orderBy('is_main', 'desc')
             ->orderBy('active', 'desc')
-            ->orderBy('id', 'desc')
-            ->paginate(10);
+            ->orderBy('id', 'desc');
+
+        if ($request->search != null) {
+            $abouts->where(
+                fn($query) =>
+                $query->where('title', 'like', '%'.$request->search.'%')
+                    ->orWhere('subtitle', 'like', '%'.$request->search.'%')
+            );
+        }
+        if ($request->status != null) {
+            $abouts->where('active', $request->status);
+        }
+
+        $abouts = $abouts->paginate(10);
         return view('admin.about.index', compact('abouts'));
     }
 
@@ -88,7 +100,9 @@ class AboutController extends Controller
             $about->image = Helper::fileUpdate($about->image, $request->image, About::$ImagePath);
             $about->active = $request->active ? 1 : 0;
             if ($request->main) {
-                About::where('is_main', true)->update(['is_main' => false]);
+                About::where('id', '!=', $about->id)
+                    ->where('is_main', true)
+                    ->update(['is_main' => false]);
                 $about->is_main = 1;
             }
             $about->save();

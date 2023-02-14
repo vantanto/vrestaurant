@@ -1,5 +1,17 @@
 @extends('admin.layouts.app')
 @section('content')
+<x-forms.filter :search_placeholder="'Title'" :status="true">
+    <div class="row">
+        <div class="fomr-group col-md-4">
+            <label>Date Start</label>
+            <input type="datetime-local" name="date_start" class="form-control" value="{{ request()->input('date_start') }}" >
+        </div>
+        <div class="form-group col-md-4">
+            <label>Date End</label>
+            <input type="datetime-local" name="date_end" class="form-control" value="{{ request()->input('date_end') }}" >
+        </div>
+    </div>
+</x-forms.filter>
 <div class="card">
     <div class="card-header">
         <strong>List Event</strong>

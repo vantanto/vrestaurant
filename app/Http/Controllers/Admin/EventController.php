@@ -13,8 +13,22 @@ class EventController extends Controller
     public function index(Request $request)
     {
         $events = Event::orderBy('active', 'desc')
-            ->orderBy('id', 'desc')
-            ->paginate(10);
+            ->orderBy('id', 'desc');
+        
+        if ($request->search != null) {
+            $events->where('title', 'like', '%'.$request->search.'%');
+        }
+        if ($request->status != null) {
+            $events->where('active', $request->status);
+        }
+        if ($request->date_start != null) {
+            $events->where('date_start', '>=', $request->date_start);
+        }
+        if ($request->date_end != null) {
+            $events->where('date_end', '<=', $request->date_end);
+        }
+
+        $events = $events->paginate(10);
         return view('admin.event.index', compact('events'));
     }
 

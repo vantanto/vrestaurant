@@ -1,5 +1,6 @@
 @extends('admin.layouts.app')
 @section('content')
+<x-forms.filter :search_placeholder="'Title, Subtitle'" :status="true" />
 <div class="card">
     <div class="card-header">
         <strong>List About</strong>

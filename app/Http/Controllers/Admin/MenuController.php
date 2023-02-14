@@ -13,8 +13,16 @@ class MenuController extends Controller
     public function index(Request $request)
     {
         $menus = Menu::orderBy('active', 'desc')
-            ->orderBy('id', 'desc')
-            ->paginate(10);
+            ->orderBy('id', 'desc');
+        
+        if ($request->search != null) {
+            $menus->where('name', 'like', '%'.$request->search.'%');
+        }
+        if ($request->status != null) {
+            $menus->where('active', $request->status);
+        }
+        
+        $menus = $menus->paginate(10);
         return view('admin.menu.index', compact('menus'));
     }
 

@@ -15,6 +15,7 @@ class Gallery extends Model
         'active',
     ];
 
+    public static $ImagePath = 'images/gallery/';
     public static $Category = [
         '1' => 'interior',
         '2' => 'food',

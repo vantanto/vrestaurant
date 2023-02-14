@@ -1,48 +1,40 @@
 @extends('admin.layouts.app')
 @section('content')
-<div class="mb-3">
-    <form method="get" action="{{ request()->url() }}">
-        <div class="row">
-            <div class="form-group col-md-4">
-                <label>Search</label>
-                <input type="text" name="search" class="form-control" value="{{ request()->input('search') }}" placeholder="Code, Name, Phone, Email">
-            </div>
-            <div class="form-group col-md-2">
-                <label>Status</label>
-                <select name="status" class="form-control">
-                    <option value="">All Status</option>
-                    @foreach ($statuses as $status)
-                        <option value="{{ $status }}"
-                            @if($status == request()->input('status')) selected @endif>
-                            {{ ucwords($status) }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
+<x-forms.filter :search_placeholder="'Code, Name, Phone, Email'" :status="false">
+    <x-slot name="slot_top">
+        <div class="form-group col-md-2">
+            <label>Status</label>
+            <select name="status" class="form-control">
+                <option value="">All Status</option>
+                @foreach ($statuses as $status)
+                    <option value="{{ $status }}"
+                        @if($status == request()->input('status')) selected @endif>
+                        {{ ucwords($status) }}
+                    </option>
+                @endforeach
+            </select>
         </div>
-        <div class="row">
-            <div class="fomr-group col-md-4">
-                <label>Date Start</label>
-                <input type="datetime-local" name="date_start" class="form-control" value="{{ request()->input('date_start') }}" >
-            </div>
-            <div class="form-group col-md-4">
-                <label>Date End</label>
-                <input type="datetime-local" name="date_end" class="form-control" value="{{ request()->input('date_end') }}" >
-            </div>
-            <div class="form-group col-md-4">
-                <label>People</label>
-                <select name="people" class="form-control">
-                    <option value="">All People</option>
-                    @for ($i=1; $i<=12; $i++)
-                        <option value="{{ $i }}">{{ $i }} person</option>
-                    @endfor
-                </select>
-            </div>
+    </x-slot>
+    <div class="row">
+        <div class="fomr-group col-md-4">
+            <label>Date Start</label>
+            <input type="datetime-local" name="date_start" class="form-control" value="{{ request()->input('date_start') }}" >
         </div>
-        <button type="submit" class="btn btn-outline-primary">Apply Filter</button>
-        <a href="{{ request()->url() }}" class="btn btn-secondary">Reset Filter</a>
-    </form>
-</div>
+        <div class="form-group col-md-4">
+            <label>Date End</label>
+            <input type="datetime-local" name="date_end" class="form-control" value="{{ request()->input('date_end') }}" >
+        </div>
+        <div class="form-group col-md-4">
+            <label>People</label>
+            <select name="people" class="form-control">
+                <option value="">All People</option>
+                @for ($i=1; $i<=12; $i++)
+                    <option value="{{ $i }}">{{ $i }} person</option>
+                @endfor
+            </select>
+        </div>
+    </div>
+</x-forms.filter>
 <div class="card">
     <div class="card-header">
         <strong>List Reservation</strong>

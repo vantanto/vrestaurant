@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ReservationController;
@@ -70,6 +71,21 @@ Route::group(['middleware' => ['auth']], function () {
             ->name('events.update');
         Route::post('/destroy/{id}', [EventController::class, 'destroy'])
             ->name('events.destroy');
+    });
+
+    Route::group(['prefix' => 'galleries'], function() {
+        Route::get('/', [GalleryController::class, 'index'])
+            ->name('galleries.index');
+        Route::get('/create', [GalleryController::class, 'create'])
+            ->name('galleries.create');
+        Route::post('/store', [GalleryController::class, 'store'])
+            ->name('galleries.store');
+        Route::get('/edit/{id}', [GalleryController::class, 'edit'])
+            ->name('galleries.edit');
+        Route::post('/update/{id}', [GalleryController::class, 'update'])
+            ->name('galleries.update');
+        Route::post('/destroy/{id}', [GalleryController::class, 'destroy'])
+            ->name('galleries.destroy');
     });
 
     Route::group(['prefix' => 'menus'], function() {
