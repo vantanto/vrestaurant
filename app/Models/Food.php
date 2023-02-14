@@ -21,6 +21,8 @@ class Food extends Model
         'active',
     ];
 
+    public static $ImagePath = 'images/food/';
+
     public function menu()
     {
         return $this->belongsTo(Menu::class);

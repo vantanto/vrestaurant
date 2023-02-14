@@ -44,7 +44,7 @@
             </ul>
         </li>
         <li class="c-sidebar-nav-item c-sidebar-nav-dropdown 
-            @if(Request::routeIs(['chefs.*', 'events.*', 'menus.*'])) c-show @endif">
+            @if(Request::routeIs(['chefs.*', 'events.*', 'foods.*', 'menus.*'])) c-show @endif">
             <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
                 <i class="c-sidebar-nav-icon fa fa-th-list"></i>
                 Master Data
@@ -60,6 +60,12 @@
                     <a class="c-sidebar-nav-link @if(Request::routeIs('events.*')) c-active @endif" href="{{ route('events.index') }}">
                         <span class="c-sidebar-nav-icon"></span>
                         Event
+                    </a>
+                </li>
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link @if(Request::routeIs('foods.*')) c-active @endif" href="{{ route('foods.index') }}">
+                        <span class="c-sidebar-nav-icon"></span>
+                        Food
                     </a>
                 </li>
                 <li class="c-sidebar-nav-item">
