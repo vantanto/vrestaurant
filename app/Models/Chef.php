@@ -13,6 +13,9 @@ class Chef extends Model
         'name',
         'position',
         'description',
+        'image',
         'active',
     ];
+
+    public static $ImagePath = 'images/chef/';
 }

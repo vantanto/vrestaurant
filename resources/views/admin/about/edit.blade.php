@@ -9,14 +9,14 @@
                 <form id="mainForm" method="post" action="{{ route('abouts.update', $about->id) }}">
                     @csrf
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="image">Image</label>
                                 <input type="file" id="image" name="image" class="form-control-file" accept=".png, .jpg, .jpeg">
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="row">
+                            <div class="d-flex">
                                 <div class="form-group mr-3">
                                     <label for="active">Active</label>
                                     <div class="form-control-plaintext py-0">

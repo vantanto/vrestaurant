@@ -8,7 +8,7 @@
                 <form id="mainForm" method="post" action="{{ route('events.update', $event->id) }}">
                     @csrf
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="title">Title</label>
                                 <input type="text" id="title" name="title" class="form-control" required value="{{ $event->title }}">

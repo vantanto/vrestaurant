@@ -3,15 +3,15 @@
 <div class="row">
     <div class="col-md-8">
         <div class="card">
-            <div class="card-header"><strong>Create Menu</strong></div>
+            <div class="card-header"><strong>Create Chef</strong></div>
             <div class="card-body">
-                <form id="mainForm" method="post" action="{{ route('menus.store') }}">
+                <form id="mainForm" method="post" action="{{ route('chefs.store') }}">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" name="name" class="form-control" required>
+                                <label for="image">Image</label>
+                                <input type="file" id="image" name="image" class="form-control-file" required accept=".png, .jpg, .jpeg">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -19,7 +19,7 @@
                                 <label for="active">Active</label>
                                 <div class="form-control-plaintext py-0">
                                     <label class="c-switch c-switch-pill c-switch-success mb-0">
-                                        <input type="checkbox" id="active" name="active" checked="" value="1" class="c-switch-input" ><span class="c-switch-slider"></span>
+                                        <input class="c-switch-input" type="checkbox" id="active" name="active" checked="" value="1"><span class="c-switch-slider"></span>
                                     </label>
                                 </div>
                             </div>
@@ -27,13 +27,17 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="image">Image (Optional)</label>
-                            <input type="file" id="image" name="image" class="form-control-file" accept=".png, .jpg, .jpeg">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="bg_image">Background (Optional)</label>
-                            <input type="file" id="bg_image" name="bg_image" class="form-control-file" accept=".png, .jpg, .jpeg">
+                            <label for="position">Position</label>
+                            <input type="text" id="position" name="position" class="form-control">
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description" class="form-control" rows="10" required></textarea>
                     </div>
                     <div class="text-right">
                         <button type="submit" class="btn btn-primary">Save</button>

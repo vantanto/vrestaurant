@@ -9,7 +9,7 @@
                 <form id="mainForm" method="post" action="{{ route('banners.update', $banner->id) }}">
                     @csrf
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="image">Image</label>
                                 <input type="file" id="image" name="image" class="form-control-file" accept=".png, .jpg, .jpeg">

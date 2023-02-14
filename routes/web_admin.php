@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\ChefController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\GalleryController;
@@ -54,6 +55,23 @@ Route::group(['middleware' => ['auth']], function () {
             ->name('banners.update');
         Route::post('/destroy/{id}', [BannerController::class, 'destroy'])
             ->name('banners.destroy');
+    });
+
+    Route::group(['prefix' => 'chefs'], function() {
+        Route::get('/', [ChefController::class, 'index'])
+            ->name('chefs.index');
+        Route::get('/create', [ChefController::class, 'create'])
+            ->name('chefs.create');
+        Route::post('/store', [ChefController::class, 'store'])
+            ->name('chefs.store');
+        Route::get('/detail', [ChefController::class, 'detail'])
+            ->name('chefs.detail');
+        Route::get('/edit/{id}', [ChefController::class, 'edit'])
+            ->name('chefs.edit');
+        Route::post('/update/{id}', [ChefController::class, 'update'])
+            ->name('chefs.update');
+        Route::post('/destroy/{id}', [ChefController::class, 'destroy'])
+            ->name('chefs.destroy');
     });
 
     Route::group(['prefix' => 'events'], function() {
