@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\CategoryBlogController;
 use App\Http\Controllers\Admin\ChefController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
@@ -56,6 +57,23 @@ Route::group(['middleware' => ['auth']], function () {
             ->name('banners.update');
         Route::post('/destroy/{id}', [BannerController::class, 'destroy'])
             ->name('banners.destroy');
+    });
+
+    Route::group(['prefix' => 'category_blogs'], function() {
+        Route::get('/', [CategoryBlogController::class, 'index'])
+            ->name('category_blogs.index');
+        Route::get('/create', [CategoryBlogController::class, 'create'])
+            ->name('category_blogs.create');
+        Route::post('/store', [CategoryBlogController::class, 'store'])
+            ->name('category_blogs.store');
+        Route::get('/detail', [CategoryBlogController::class, 'detail'])
+            ->name('category_blogs.detail');
+        Route::get('/edit/{id}', [CategoryBlogController::class, 'edit'])
+            ->name('category_blogs.edit');
+        Route::post('/update/{id}', [CategoryBlogController::class, 'update'])
+            ->name('category_blogs.update');
+        Route::post('/destroy/{id}', [CategoryBlogController::class, 'destroy'])
+            ->name('category_blogs.destroy');
     });
 
     Route::group(['prefix' => 'chefs'], function() {
