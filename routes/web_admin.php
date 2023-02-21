@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryBlogController;
 use App\Http\Controllers\Admin\ChefController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -57,6 +58,23 @@ Route::group(['middleware' => ['auth']], function () {
             ->name('banners.update');
         Route::post('/destroy/{id}', [BannerController::class, 'destroy'])
             ->name('banners.destroy');
+    });
+
+    Route::group(['prefix' => 'blogs'], function() {
+        Route::get('/', [BlogController::class, 'index'])
+            ->name('blogs.index');
+        Route::get('/create', [BlogController::class, 'create'])
+            ->name('blogs.create');
+        Route::post('/store', [BlogController::class, 'store'])
+            ->name('blogs.store');
+        Route::get('/show/{slug}', [BlogController::class, 'show'])
+            ->name('blogs.show');
+        Route::get('/edit/{slug}', [BlogController::class, 'edit'])
+            ->name('blogs.edit');
+        Route::post('/update/{slug}', [BlogController::class, 'update'])
+            ->name('blogs.update');
+        Route::post('/destroy/{slug}', [BlogController::class, 'destroy'])
+            ->name('blogs.destroy');
     });
 
     Route::group(['prefix' => 'category_blogs'], function() {

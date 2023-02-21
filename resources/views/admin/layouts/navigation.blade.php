@@ -44,12 +44,18 @@
             </ul>
         </li>
         <li class="c-sidebar-nav-item c-sidebar-nav-dropdown 
-            @if(Request::routeIs(['category_blogs.*', 'chefs.*', 'events.*', 'foods.*', 'menus.*'])) c-show @endif">
+            @if(Request::routeIs(['blogs.*', 'category_blogs.*', 'chefs.*', 'events.*', 'foods.*', 'menus.*'])) c-show @endif">
             <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
                 <i class="c-sidebar-nav-icon fa fa-th-list"></i>
                 Master Data
             </a>
             <ul class="c-sidebar-nav-dropdown-items">
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link @if(Request::routeIs('blogs.*')) c-active @endif" href="{{ route('blogs.index') }}">
+                        <span class="c-sidebar-nav-icon"></span>
+                        Blog
+                    </a>
+                </li>
                 <li class="c-sidebar-nav-item">
                     <a class="c-sidebar-nav-link @if(Request::routeIs('category_blogs.*')) c-active @endif" href="{{ route('category_blogs.index') }}">
                         <span class="c-sidebar-nav-icon"></span>

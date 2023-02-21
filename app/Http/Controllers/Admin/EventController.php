@@ -56,7 +56,7 @@ class EventController extends Controller
             $event = new Event;
             $event->fill($request->only('date_start', 'date_end', 'title', 'description'));
             $event->image = Helper::fileStore($request->image, Event::$ImagePath);
-            $event->bg_image = Helper::fileStore($request->image, Event::$ImagePath, 'bg_'.date('YmdHis'));
+            $event->bg_image = Helper::fileStore($request->bg_image, Event::$ImagePath, 'bg_'.date('YmdHis'));
             $event->active = $request->active ? 1 : 0;
             $event->save();
             DB::commit();

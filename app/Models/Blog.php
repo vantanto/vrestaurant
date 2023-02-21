@@ -21,6 +21,8 @@ class Blog extends Model
         'user_id',
     ];
 
+    public static $ImagePath = 'images/blog/';
+
     public function categoryBlog()
     {
         return $this->belongsTo(CategoryBlog::class);

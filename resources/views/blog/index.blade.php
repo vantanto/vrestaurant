@@ -63,7 +63,7 @@
                                     </span>
 
                                     <span>
-                                        {{ $blog->categoryBlog->name }}
+                                        {{ $blog->categoryBlog->name ?? '' }}
                                         {{-- <span class="m-r-6 m-l-4">|</span> --}}
                                     </span>
 
