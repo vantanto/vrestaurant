@@ -90,6 +90,10 @@
             @if(session('error'))
                 Swal.fire('Error!', "{{ session('error') }}", 'error');
             @endif
+
+            @if ($errors->reservations->any())
+                Swal.fire('Error!', "Reservation Input Error", 'error');
+            @endif
         });
     </script>
 

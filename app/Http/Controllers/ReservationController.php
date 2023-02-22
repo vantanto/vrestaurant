@@ -50,6 +50,9 @@ class ReservationController extends Controller
         $reservation->code = $this->generateCode($reservation->date);
         $reservation->status = Reservation::$Status['1'];
         $reservation->save();
+
+        return redirect()->route('members.reservations.show', $reservation->code)
+            ->with('success', 'Reservation Created Successfully.');
     }
 
     public function show(Request $request, $code)

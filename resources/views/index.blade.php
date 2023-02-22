@@ -296,7 +296,7 @@
                             <!-- Date -->
                             <span class="txt9">Date</span>
                             <div class="wrap-inputdate pos-relative txt10 size12 bo2 bo-rad-10 m-t-3 m-b-23">
-                                <input class="my-calendar bo-rad-10 sizefull txt10 p-l-20" type="text" name="date" required>
+                                <input class="my-calendar bo-rad-10 sizefull txt10 p-l-20" type="text" name="date" required value="{{ old('date') }}">
                                 <i class="btn-calendar fa fa-calendar ab-r-m hov-pointer m-r-18" aria-hidden="true"></i>
                             </div>
 
@@ -306,7 +306,10 @@
                                 <!-- Select2 -->
                                 <select class="selection-1" name="time" required>
                                     @foreach ($times as $time)
-                                        <option value="{{ $time->time }}">{{ date('H:i', strtotime($time->time)) }}</option>
+                                        <option value="{{ $time->time }}"
+                                            @if($time->time == old('time')) selected @endif>
+                                            {{ date('H:i', strtotime($time->time)) }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -317,7 +320,10 @@
                                 <!-- Select2 -->
                                 <select class="selection-1" name="people" required>
                                     @for ($i=1; $i<=12; $i++)
-                                        <option value="{{ $i }}">{{ $i }} person</option>
+                                        <option value="{{ $i }}"
+                                            @if($i == old('people')) selected @endif>
+                                            {{ $i }} person
+                                        </option>
                                     @endfor
                                 </select>
                             </div>
@@ -327,19 +333,19 @@
                             <!-- Name -->
                             <span class="txt9">Name</span>
                             <div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
-                                <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="name" placeholder="Name" required>
+                                <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="name" placeholder="Name" required value="{{ old('name') }}">
                             </div>
 
                             <!-- Phone -->
                             <span class="txt9">Phone</span>
                             <div class="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
-                                <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="phone" placeholder="Phone" required>
+                                <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="phone" placeholder="Phone" required value="{{ old('phone') }}">
                             </div>
 
                             <!-- Email -->
                             <span class="txt9">Email</span>
                             <div class="wrap-inputemail size12 bo2 bo-rad-10 m-t-3 m-b-23">
-                                <input class="bo-rad-10 sizefull txt10 p-l-20" type="email" name="email" placeholder="Email" required>
+                                <input class="bo-rad-10 sizefull txt10 p-l-20" type="email" name="email" placeholder="Email" required value="{{ old('email') }}">
                             </div>
                         </div>
                     </div>

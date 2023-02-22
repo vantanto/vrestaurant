@@ -30,7 +30,7 @@ class ReservationStoreRequest extends FormRequest
             'time' => 'required|exists:times,time',
             'people' => 'required|numeric|min:1|max:12',
             'name' => 'required|string',
-            'phone' => 'required',
+            'phone' => 'required|numeric',
             'email' => 'required|email',
         ];
     }

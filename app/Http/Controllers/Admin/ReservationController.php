@@ -69,7 +69,7 @@ class ReservationController extends Controller
             'time' => 'required|exists:times,time',
             'people' => 'required|numeric|min:1|max:12',
             'name' => 'required|string',
-            'phone' => 'required',
+            'phone' => 'required|numeric',
             'email' => 'required|email',
         ]);
         if ($validator->fails()) {
@@ -121,7 +121,7 @@ class ReservationController extends Controller
             'time' => 'required|exists:times,time',
             'people' => 'required|numeric|min:1|max:12',
             'name' => 'required|string',
-            'phone' => 'required',
+            'phone' => 'required|numeric',
             'email' => 'required|email',
         ]);
         if ($validator->fails()) {

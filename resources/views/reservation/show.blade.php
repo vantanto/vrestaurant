@@ -11,27 +11,34 @@
 <!-- Reservation -->
 <section class="section-reservation bg1-pattern p-t-100 p-b-113">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12 p-b-30">
-                <div class="t-center">
-                    <span class="tit2 t-center">
-                        Reservation
-                    </span>
+        <div class="tit2 t-center p-b-30">
+            Thank You for Your Reservation
+        </div>
 
-                    <h3 class="tit3 t-center m-b-35 m-t-2">
-                        {{ $reservation->code }}
-                    </h3>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-body p-5">
+                        <div class="t-center">
+                            <span class="tit2 t-center">
+                                Reservation
+                            </span>
+        
+                            <h3 class="tit3 t-center m-b-35 m-t-2">
+                                {{ $reservation->code }}
+                            </h3>
+                        </div>
+        
+                        <div class="wrap-form-reservation size22 m-l-r-auto t-center">
+                            <h4>
+                                {{ date('d F Y', strtotime($reservation->date)) }} {{ date('h:i A', strtotime($reservation->time)) }}
+                            </h4>
+                            <h6>
+                                {{ $reservation->name }} ({{ $reservation->people }} person)
+                            </h6>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="wrap-form-reservation size22 m-l-r-auto t-center">
-                    <h4>
-                        {{ date('d F Y', strtotime($reservation->date)) }} {{ date('h:i A', strtotime($reservation->time)) }}
-                    </h4>
-                    <h6>
-                        {{ $reservation->name }} ({{ $reservation->people }} person)
-                    </h6>
-                </div>
-                
             </div>
         </div>
 
