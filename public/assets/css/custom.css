@@ -1,7 +1,70 @@
+:root {
+    --reservation-pending: #ffc107;
+    --reservation-confirmed: #28a745;
+    --reservation-cancelled: #dc3545;
+}
+
 .font-10 {
     font-size: 0.8rem;
 }
 
+.text-hover:hover {
+    color: #321fdb;
+    cursor: pointer;
+}
+
+.text-hover.active {
+    color: #321fdb;
+}
+
 .bg-main {
     background-color: #B9F3FC !important;
+}
+
+.bg-reservation-pending {
+    color: #212529;
+    background-color: var(--reservation-pending);
+}
+
+.bg-reservation-confirmed {
+    color: #fff;
+    background-color: var(--reservation-confirmed);
+}
+
+.bg-reservation-cancelled {
+    color: #fff;
+    background-color: var(--reservation-cancelled);
+}
+
+.bg-gradient-reservation-pending {
+    color: #212529;
+    background: #f6960b!important;
+    background: linear-gradient(45deg,#f9b115 0,#f6960b 100%)!important;
+    border-color: #f6960b!important;
+}
+
+.bg-gradient-reservation-confirmed {
+    color: #fff;
+    background: #1b9e3e!important;
+    background: linear-gradient(45deg,#2eb85c 0,#1b9e3e 100%)!important;
+    border-color: #1b9e3e!important;
+}
+
+.bg-gradient-reservation-cancelled {
+    color: #fff;
+    background: #d93737!important;
+    background: linear-gradient(45deg,#e55353 0,#d93737 100%)!important;
+    border-color: #d93737!important;
+}
+
+html:not([dir=rtl]) .c-callout-reservation-pending {
+    border-left-color: var(--reservation-pending);
+}
+
+html:not([dir=rtl]) .c-callout-reservation-confirmed {
+    border-left-color: var(--reservation-confirmed);
+}
+
+html:not([dir=rtl]) .c-callout-reservation-cancelled {
+    border-left-color: var(--reservation-cancelled);
 }

@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Storage;
 
 class Helper
 {
+    public static $Days = array('Monday', 'Tuesday', 'Wednesday','Thursday','Friday', 'Saturday', 'Sunday');
+
     public static function fileStore($file, $filePath, $fileName = null, $disk = 'public')
     {
         if ($file != null) {
