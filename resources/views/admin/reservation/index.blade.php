@@ -46,7 +46,7 @@
         </div>
     </div>
     <div class="card-body">
-        <table class="table table-responsive-sm">
+        <table class="table table-responsive">
             <thead>
                 <tr>
                     <th>Code</th>

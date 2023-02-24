@@ -85,7 +85,7 @@
             </div>
         </div>
         <!-- /.row--><br>
-        <table class="table table-responsive-sm table-hover table-outline mb-0">
+        <table class="table table-responsive table-hover table-outline mb-0">
             <thead class="thead-light">
                 <tr>
                     <th class="text-center">
