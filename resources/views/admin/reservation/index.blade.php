@@ -76,58 +76,60 @@
         </div>
     </div>
     <div class="card-body">
-        <table class="table table-responsive">
-            <thead>
-                <tr>
-                    <th>Code</th>
-                    <th>Date</th>
-                    <th>People</th>
-                    <th>Name</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($reservations as $reservation)
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>
-                            <a href="{{ route('reservations.show', $reservation->code) }}">
-                                {{ $reservation->code }}
-                            </a>
-                        </td>
-                        <td>
-                            {{ date('D, d/m/Y', strtotime($reservation->date)) }} 
-                            {{ date('H:i', strtotime($reservation->time)) }}
-                        </td>
-                        <td>
-                            {{ $reservation->people }} person
-                        </td>
-                        <td>
-                            {{ $reservation->name }}
-                        </td>
-                        <td>
-                            {{ $reservation->phone }}
-                        </td>
-                        <td>
-                            {{ $reservation->email }}
-                        </td>
-                        <td>
-                            <x-reservation.badge-status :status="$reservation->status" />
-                        </td>
-                        <td>
-                            <a href="{{ route('reservations.show', $reservation->code) }}" class="btn btn-info mb-1">Detail</a>
-                            <a href="{{ route('reservations.edit', $reservation->code) }}" class="btn btn-warning mb-1">Edit</a>
-                            <form method="post" action="{{ route('reservations.destroy', $reservation->code) }}" class="d-inline mb-1">
-                                @csrf
-                                <button type="button" class="btn btn-danger" onclick="confirmSwalAlert(this)">Delete</button>
-                            </form>
-                        </td>
+                        <th>Code</th>
+                        <th>Date</th>
+                        <th>People</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Action</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($reservations as $reservation)
+                        <tr>
+                            <td>
+                                <a href="{{ route('reservations.show', $reservation->code) }}">
+                                    {{ $reservation->code }}
+                                </a>
+                            </td>
+                            <td>
+                                {{ date('D, d/m/Y', strtotime($reservation->date)) }} 
+                                {{ date('H:i', strtotime($reservation->time)) }}
+                            </td>
+                            <td>
+                                {{ $reservation->people }} person
+                            </td>
+                            <td>
+                                {{ $reservation->name }}
+                            </td>
+                            <td>
+                                {{ $reservation->phone }}
+                            </td>
+                            <td>
+                                {{ $reservation->email }}
+                            </td>
+                            <td>
+                                <x-reservation.badge-status :status="$reservation->status" />
+                            </td>
+                            <td>
+                                <a href="{{ route('reservations.show', $reservation->code) }}" class="btn btn-info mb-1">Detail</a>
+                                <a href="{{ route('reservations.edit', $reservation->code) }}" class="btn btn-warning mb-1">Edit</a>
+                                <form method="post" action="{{ route('reservations.destroy', $reservation->code) }}" class="d-inline mb-1">
+                                    @csrf
+                                    <button type="button" class="btn btn-danger" onclick="confirmSwalAlert(this)">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
         {{ $reservations->withQueryString()->links() }}
     </div>
 </div>

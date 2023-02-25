@@ -23,52 +23,54 @@
         </div>
     </div>
     <div class="card-body">
-        <table class="table table-responsive">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Title</th>
-                    <th>Status</th>
-                    <th>Image</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($events as $event)
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>
-                            {{ $event->date_start ? date('d/m/Y H:i', strtotime($event->date_start)) : '' }}
-                            {{ $event->date_end ? ' - ' . date('d/m/Y H:i', strtotime($event->date_end)) : '' }}
-                        </td>
-                        <td>
-                            {{ $event->title }}
-                        </td>
-                        <td>
-                            <x-badge-active :active="$event->active" />
-                        </td>
-                        <td>
-                            @if ($event->image)
-                                <a class="btn btn-info fa fa-file-image-o mb-1" href="{{ Storage::disk('public')->url($event->image) }}" data-lightbox="gallery"></a>
-                            @endif
-                            @if ($event->bg_image)
-                                <a class="btn btn-info fa fa-picture-o mb-1" href="{{ Storage::disk('public')->url($event->bg_image) }}" data-lightbox="gallery"></a>
-                            @endif
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-info mb-1" data-toggle="modal" data-target="#modal-detail"
-                                data-detail='@json(['id' => $event->id])'>
-                                <i class="fa fa-eye"></i>
-                            </button>
-                            <a href="{{ route('events.edit', $event->id) }}" class="btn btn-warning mb-1">Edit</a>
-                            <form method="post" action="{{ route('events.destroy', $event->id) }}" class="d-inline mb-1">
-                                @csrf
-                                <button type="button" class="btn btn-danger" onclick="confirmSwalAlert(this)">Delete</button>
-                            </form>
-                        </td>
+                        <th>Date</th>
+                        <th>Title</th>
+                        <th>Status</th>
+                        <th>Image</th>
+                        <th>Action</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($events as $event)
+                        <tr>
+                            <td>
+                                {{ $event->date_start ? date('d/m/Y H:i', strtotime($event->date_start)) : '' }}
+                                {{ $event->date_end ? ' - ' . date('d/m/Y H:i', strtotime($event->date_end)) : '' }}
+                            </td>
+                            <td>
+                                {{ $event->title }}
+                            </td>
+                            <td>
+                                <x-badge-active :active="$event->active" />
+                            </td>
+                            <td>
+                                @if ($event->image)
+                                    <a class="btn btn-info fa fa-file-image-o mb-1" href="{{ Storage::disk('public')->url($event->image) }}" data-lightbox="gallery"></a>
+                                @endif
+                                @if ($event->bg_image)
+                                    <a class="btn btn-info fa fa-picture-o mb-1" href="{{ Storage::disk('public')->url($event->bg_image) }}" data-lightbox="gallery"></a>
+                                @endif
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-info mb-1" data-toggle="modal" data-target="#modal-detail"
+                                    data-detail='@json(['id' => $event->id])'>
+                                    <i class="fa fa-eye"></i>
+                                </button>
+                                <a href="{{ route('events.edit', $event->id) }}" class="btn btn-warning mb-1">Edit</a>
+                                <form method="post" action="{{ route('events.destroy', $event->id) }}" class="d-inline mb-1">
+                                    @csrf
+                                    <button type="button" class="btn btn-danger" onclick="confirmSwalAlert(this)">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
         {{ $events->withQueryString()->links() }}
     </div>
 </div>

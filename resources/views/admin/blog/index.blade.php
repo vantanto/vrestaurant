@@ -33,39 +33,41 @@
         </div>
     </div>
     <div class="card-body">
-        <table class="table table-responsive">
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Published</th>
-                    <th>Category</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($blogs as $blog)
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>
-                            {{ $blog->title }}
-                        </td>
-                        <td>
-                            {{ date('d/m/Y', strtotime($blog->published)) }}
-                        </td>
-                        <td>
-                            {{ $blog->categoryBlog->name ?? '' }}
-                        </td>
-                        <td>
-                            <a href="{{ route('blogs.show', $blog->slug) }}" class="btn btn-info mb-1">Detail</a>
-                            <a href="{{ route('blogs.edit', $blog->slug) }}" class="btn btn-warning mb-1">Edit</a>
-                            <form method="post" action="{{ route('blogs.destroy', $blog->slug) }}" class="d-inline mb-1">
-                                @csrf
-                                <button type="button" class="btn btn-danger" onclick="confirmSwalAlert(this)">Delete</button>
-                            </form>
-                        </td>
+                        <th>Title</th>
+                        <th>Published</th>
+                        <th>Category</th>
+                        <th>Action</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($blogs as $blog)
+                        <tr>
+                            <td>
+                                {{ $blog->title }}
+                            </td>
+                            <td>
+                                {{ date('d/m/Y', strtotime($blog->published)) }}
+                            </td>
+                            <td>
+                                {{ $blog->categoryBlog->name ?? '' }}
+                            </td>
+                            <td>
+                                <a href="{{ route('blogs.show', $blog->slug) }}" class="btn btn-info mb-1">Detail</a>
+                                <a href="{{ route('blogs.edit', $blog->slug) }}" class="btn btn-warning mb-1">Edit</a>
+                                <form method="post" action="{{ route('blogs.destroy', $blog->slug) }}" class="d-inline mb-1">
+                                    @csrf
+                                    <button type="button" class="btn btn-danger" onclick="confirmSwalAlert(this)">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
         {{ $blogs->withQueryString()->links() }}
     </div>
 </div>

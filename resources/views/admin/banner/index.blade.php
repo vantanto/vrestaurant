@@ -33,34 +33,36 @@
         </div>
     </div>
     <div class="card-body">
-        <table class="table table-responsive">
-            <thead>
-                <tr>
-                    <th>Image</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($banners as $banner)
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>
-                            <img src="{{ Storage::disk('public')->url($banner->image) }}" class="img-fluid" style="max-height: 150px;">
-                        </td>
-                        <td>
-                            <x-badge-active :active="$banner->active" />
-                        </td>
-                        <td>
-                            <a href="{{ route('banners.edit', $banner->id) }}" class="btn btn-warning mb-1">Edit</a>
-                            <form method="post" action="{{ route('banners.destroy', $banner->id) }}" class="d-inline mb-1">
-                                @csrf
-                                <button type="button" class="btn btn-danger" onclick="confirmSwalAlert(this)">Delete</button>
-                            </form>
-                        </td>
+                        <th>Image</th>
+                        <th>Status</th>
+                        <th>Action</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($banners as $banner)
+                        <tr>
+                            <td>
+                                <img src="{{ Storage::disk('public')->url($banner->image) }}" class="img-fluid" style="max-height: 150px;">
+                            </td>
+                            <td>
+                                <x-badge-active :active="$banner->active" />
+                            </td>
+                            <td>
+                                <a href="{{ route('banners.edit', $banner->id) }}" class="btn btn-warning mb-1">Edit</a>
+                                <form method="post" action="{{ route('banners.destroy', $banner->id) }}" class="d-inline mb-1">
+                                    @csrf
+                                    <button type="button" class="btn btn-danger" onclick="confirmSwalAlert(this)">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
         {{ $banners->withQueryString()->links() }}
     </div>
 </div>

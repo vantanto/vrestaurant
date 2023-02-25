@@ -19,8 +19,8 @@ class ReservationTotal extends Component
      */
     public function __construct($dateStart = null, $dateEnd = null)
     {
-        $this->dateStart = $dateStart;
-        $this->dateEnd = $dateEnd;
+        $this->dateStart = $dateStart ?? date('Y-m-d');
+        $this->dateEnd = $dateEnd ?? date('Y-m-d');
         $this->reservationStatus = Reservation::$Status;
         
         $this->reservationTotals['people'] = Reservation::where('status', Reservation::$Status['2'])

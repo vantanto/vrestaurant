@@ -27,38 +27,40 @@
         </div>
     </div>
     <div class="card-body">
-        <table class="table table-responsive">
-            <thead>
-                <tr>
-                    <th>Image</th>
-                    <th>Category</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($galleries as $gallery)
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>
-                            <img src="{{ Storage::disk('public')->url($gallery->image) }}" class="img-fluid" style="max-height: 150px;">
-                        </td>
-                        <td>
-                            {{ ucwords(str_replace('_', ' ', $gallery->category)) }}
-                        </td>
-                        <td>
-                            <x-badge-active :active="$gallery->active" />
-                        </td>
-                        <td>
-                            <a href="{{ route('galleries.edit', $gallery->id) }}" class="btn btn-warning mb-1">Edit</a>
-                            <form method="post" action="{{ route('galleries.destroy', $gallery->id) }}" class="d-inline mb-1">
-                                @csrf
-                                <button type="button" class="btn btn-danger" onclick="confirmSwalAlert(this)">Delete</button>
-                            </form>
-                        </td>
+                        <th>Image</th>
+                        <th>Category</th>
+                        <th>Status</th>
+                        <th>Action</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($galleries as $gallery)
+                        <tr>
+                            <td>
+                                <img src="{{ Storage::disk('public')->url($gallery->image) }}" class="img-fluid" style="max-height: 150px;">
+                            </td>
+                            <td>
+                                {{ ucwords(str_replace('_', ' ', $gallery->category)) }}
+                            </td>
+                            <td>
+                                <x-badge-active :active="$gallery->active" />
+                            </td>
+                            <td>
+                                <a href="{{ route('galleries.edit', $gallery->id) }}" class="btn btn-warning mb-1">Edit</a>
+                                <form method="post" action="{{ route('galleries.destroy', $gallery->id) }}" class="d-inline mb-1">
+                                    @csrf
+                                    <button type="button" class="btn btn-danger" onclick="confirmSwalAlert(this)">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
         {{ $galleries->withQueryString()->links() }}
     </div>
 </div>

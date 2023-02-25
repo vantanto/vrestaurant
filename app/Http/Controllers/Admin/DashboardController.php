@@ -15,6 +15,12 @@ class DashboardController extends Controller
         $dateStart = Carbon::now()->startOfMonth()->format('Y-m-d');
         $dateEnd = Carbon::now()->format('Y-m-d');
 
-        return view('admin.dashboard', compact('dateStart', 'dateEnd'));
+        $reservations = Reservation::where('date', $dateEnd)
+            ->where('status', '!=', Reservation::$Status['3'])
+            ->orderBy('time')
+            ->orderBy('id')
+            ->get();
+
+        return view('admin.dashboard', compact('dateStart', 'dateEnd', 'reservations'));
     }
 }

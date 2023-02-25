@@ -12,30 +12,32 @@
         </div>
     </div>
     <div class="card-body">
-        <table class="table table-responsive">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($category_blogs as $category_blog)
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>
-                            {{ $category_blog->name }}
-                        </td>
-                        <td>
-                            <a href="{{ route('category_blogs.edit', $category_blog->id) }}" class="btn btn-warning mb-1">Edit</a>
-                            <form method="post" action="{{ route('category_blogs.destroy', $category_blog->id) }}" class="d-inline mb-1">
-                                @csrf
-                                <button type="button" class="btn btn-danger" onclick="confirmSwalAlert(this)">Delete</button>
-                            </form>
-                        </td>
+                        <th>Name</th>
+                        <th>Action</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($category_blogs as $category_blog)
+                        <tr>
+                            <td>
+                                {{ $category_blog->name }}
+                            </td>
+                            <td>
+                                <a href="{{ route('category_blogs.edit', $category_blog->id) }}" class="btn btn-warning mb-1">Edit</a>
+                                <form method="post" action="{{ route('category_blogs.destroy', $category_blog->id) }}" class="d-inline mb-1">
+                                    @csrf
+                                    <button type="button" class="btn btn-danger" onclick="confirmSwalAlert(this)">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
         {{ $category_blogs->withQueryString()->links() }}
     </div>
 </div>

@@ -17,7 +17,7 @@ class ReservationsSeeder extends Seeder
     public function run()
     {
         $reservations = Reservation::factory()
-            ->count(250)
+            ->count(1000)
             ->make();
         foreach ($reservations as $reservation) {
             $reservation->code = (new ReservationController)->generateCode($reservation['date']);

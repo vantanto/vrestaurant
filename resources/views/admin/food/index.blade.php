@@ -27,46 +27,48 @@
         </div>
     </div>
     <div class="card-body">
-        <table class="table table-responsive">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Menu</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($foods as $food)
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>
-                            {{ $food->name }}
-                        </td>
-                        <td>
-                            ${{ number_format($food->price, 2) }}
-                        </td>
-                        <td>
-                            {{ $food->menu->name }}
-                        </td>
-                        <td>
-                            <x-badge-active :active="$food->active" />
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-info mb-1" data-toggle="modal" data-target="#modal-detail"
-                                data-detail='@json(['id' => $food->id])'>
-                                <i class="fa fa-eye"></i>
-                            </button>
-                            <a href="{{ route('foods.edit', $food->id) }}" class="btn btn-warning mb-1">Edit</a>
-                            <form method="post" action="{{ route('foods.destroy', $food->id) }}" class="d-inline mb-1">
-                                @csrf
-                                <button type="button" class="btn btn-danger" onclick="confirmSwalAlert(this)">Delete</button>
-                            </form>
-                        </td>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Menu</th>
+                        <th>Status</th>
+                        <th>Action</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($foods as $food)
+                        <tr>
+                            <td>
+                                {{ $food->name }}
+                            </td>
+                            <td>
+                                ${{ number_format($food->price, 2) }}
+                            </td>
+                            <td>
+                                {{ $food->menu->name }}
+                            </td>
+                            <td>
+                                <x-badge-active :active="$food->active" />
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-info mb-1" data-toggle="modal" data-target="#modal-detail"
+                                    data-detail='@json(['id' => $food->id])'>
+                                    <i class="fa fa-eye"></i>
+                                </button>
+                                <a href="{{ route('foods.edit', $food->id) }}" class="btn btn-warning mb-1">Edit</a>
+                                <form method="post" action="{{ route('foods.destroy', $food->id) }}" class="d-inline mb-1">
+                                    @csrf
+                                    <button type="button" class="btn btn-danger" onclick="confirmSwalAlert(this)">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
         {{ $foods->withQueryString()->links() }}
     </div>
 </div>
