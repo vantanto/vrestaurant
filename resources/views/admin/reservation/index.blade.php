@@ -18,11 +18,41 @@
     <div class="row">
         <div class="form-group col-md-4">
             <label>Date Start</label>
-            <input type="datetime-local" name="date_start" class="form-control" value="{{ request()->input('date_start') }}" >
+            <div class="row">
+                <div class="col-md-8">
+                    <input type="date" name="date_start" class="form-control" value="{{ request()->input('date_start') }}" >
+                </div>
+                <div class="col-md-4">
+                    <select name="time_start" class="form-control">
+                        <option value="" selected>All Time</option>
+                        @foreach ($times as $time)
+                            <option value="{{ $time->time }}"
+                                @if($time->time == request()->input('time_start')) selected @endif>
+                                {{ date('H:i', strtotime($time->time)) }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
         </div>
         <div class="form-group col-md-4">
             <label>Date End</label>
-            <input type="datetime-local" name="date_end" class="form-control" value="{{ request()->input('date_end') }}" >
+            <div class="row">
+                <div class="col-md-8">
+                    <input type="date" name="date_end" class="form-control" value="{{ request()->input('date_end') }}" >
+                </div>
+                <div class="col-md-4">
+                    <select name="time_end" class="form-control">
+                        <option value="" selected>All Time</option>
+                        @foreach ($times as $time)
+                            <option value="{{ $time->time }}"
+                                @if($time->time == request()->input('time_end')) selected @endif>
+                                {{ date('H:i', strtotime($time->time)) }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
         </div>
         <div class="form-group col-md-4">
             <label>People</label>
@@ -98,7 +128,7 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $reservations->links() }}
+        {{ $reservations->withQueryString()->links() }}
     </div>
 </div>
 @endsection

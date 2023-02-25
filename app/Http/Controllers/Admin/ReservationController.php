@@ -14,6 +14,7 @@ class ReservationController extends Controller
     public function index(Request $request)
     {
         $statuses = Reservation::$Status;
+        $times = Time::where('active', true)->get();
         $reservations = Reservation::orderBy('id', 'desc');
 
         if ($request->search != null) {
@@ -29,29 +30,24 @@ class ReservationController extends Controller
             $reservations->where('status', $request->status);
         }
         if ($request->date_start != null) {
-            $date_start = Carbon::parse($request->date_start);
-            $reservations->where('date', '>', $date_start->format('Y-m-d'))
-                ->orWhere(
-                    fn ($query) =>
-                    $query->where('date', $date_start->format('Y-m-d'))
-                        ->where('time', '>=', $date_start->format('H:i:00'))
-                );
+            $reservations->where('date', '>=', $request->date_start);
         }
         if ($request->date_end != null) {
             $date_end = Carbon::parse($request->date_end);
-            $reservations->where('date', '<', $date_end->format('Y-m-d'))
-                ->orWhere(
-                    fn ($query) =>
-                    $query->where('date', $date_end->format('Y-m-d'))
-                        ->where('time', '<=', $date_end->format('H:i:00'))
-                );
+            $reservations->where('date', '<=', $request->date_end);
+        }
+        if ($request->time_start != null) {
+            $reservations->where('time', '>=', $request->time_start);
+        }
+        if ($request->time_end != null) {
+            $reservations->where('time', '<=', $request->time_end);
         }
         if ($request->people != null) {
             $reservations->where('people', $request->people);
         }
 
         $reservations = $reservations->paginate(10);
-        return view('admin.reservation.index', compact('statuses', 'reservations'));
+        return view('admin.reservation.index', compact('statuses', 'times', 'reservations'));
     }
 
     public function create(Request $request)

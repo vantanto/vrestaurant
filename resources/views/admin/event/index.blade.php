@@ -69,7 +69,7 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $events->links() }}
+        {{ $events->withQueryString()->links() }}
     </div>
 </div>
 

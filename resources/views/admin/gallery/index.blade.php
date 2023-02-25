@@ -59,7 +59,7 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $galleries->links() }}
+        {{ $galleries->withQueryString()->links() }}
     </div>
 </div>
 @endsection

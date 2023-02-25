@@ -61,7 +61,7 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $banners->links() }}
+        {{ $banners->withQueryString()->links() }}
     </div>
 </div>
 @endsection

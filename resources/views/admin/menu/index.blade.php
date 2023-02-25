@@ -49,7 +49,7 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $menus->links() }}
+        {{ $menus->withQueryString()->links() }}
     </div>
 </div>
 @endsection

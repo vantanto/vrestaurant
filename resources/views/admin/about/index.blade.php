@@ -49,7 +49,7 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $abouts->links() }}
+        {{ $abouts->withQueryString()->links() }}
     </div>
 </div>
 @endsection

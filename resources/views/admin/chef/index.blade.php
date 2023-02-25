@@ -48,7 +48,7 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $chefs->links() }}
+        {{ $chefs->withQueryString()->links() }}
     </div>
 </div>
 

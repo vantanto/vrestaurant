@@ -66,7 +66,7 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $blogs->links() }}
+        {{ $blogs->withQueryString()->links() }}
     </div>
 </div>
 @endsection
