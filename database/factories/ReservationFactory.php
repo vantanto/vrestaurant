@@ -21,7 +21,7 @@ class ReservationFactory extends Factory
         $times = Time::where('active', true)->get();
         $statuses = Reservation::$Status;
         return [
-            'date' => fake()->dateTimeBetween('-2 months')->format('Y-m-d'),
+            'date' => fake()->dateTimeBetween('-2 months', '+2 weeks')->format('Y-m-d'),
             'time' => $times[rand(0, (count($times) - 1))]->time,
             'name' => fake()->unique()->name(),
             'phone' => fake()->phoneNumber(),
