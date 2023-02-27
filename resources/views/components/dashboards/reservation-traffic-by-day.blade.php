@@ -1,5 +1,8 @@
 <div class="card">
-    <div class="card-header">Reservation Traffic</div>
+    <div class="card-header">
+        Reservation Traffic by Day
+        <div class="small text-muted">{{ Helper::dateFormatMonthYear($dateStart, $dateEnd) }}</div>
+    </div>
     <div class="card-body">
         <div class="row">
             @foreach ($reservationByStatuses as $keyReservation => $reservationByStatus)

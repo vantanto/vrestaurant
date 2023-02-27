@@ -6,7 +6,7 @@ use App\Helpers\Helper;
 use App\Models\Reservation;
 use Illuminate\View\Component;
 
-class ReservationTraffic extends Component
+class ReservationTrafficByDay extends Component
 {
     public $dateStart = "";
     public $dateEnd = "";
@@ -60,6 +60,6 @@ class ReservationTraffic extends Component
      */
     public function render()
     {
-        return view('components.dashboards.reservation-traffic');
+        return view('components.dashboards.reservation-traffic-by-day');
     }
 }
