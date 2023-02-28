@@ -41,7 +41,7 @@ Copy and Setup database in `.env` file
 cp .env.example .env
 ```
 
-Generate key & Run migration, seeding & Sttorage link public folder & Start local developement
+Generate key & Run migration, seeding & Storage link public folder & Start local developement
 
 ```bash
 php artisan key:generate
