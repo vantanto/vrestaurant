@@ -22,7 +22,7 @@
         </li>
     </ul>
     <ul class="c-header-nav ml-auto mr-4">
-        <li class="c-header-nav-item d-md-down-none mx-2">
+        <li class="c-header-nav-item d-md-down-none mx-2 @if(Auth::user()->is_admin === 1) text-danger @endif">
             {{ Auth::user()->name }}
         </li>
         <li class="c-header-nav-item dropdown">
@@ -30,7 +30,7 @@
                 <div class="c-avatar"><img class="c-avatar-img" src="{{ asset('assets/images/avatar.png') }}"></div>
             </a>
             <div class="dropdown-menu dropdown-menu-right pt-0">
-                <div class="p-2 text-center d-lg-none">
+                <div class="p-2 text-center d-lg-none @if(Auth::user()->is_admin === 1) text-danger @endif">
                     {{ Auth::user()->name }}
                 </div>
                 <div class="dropdown-header bg-light py-2"><strong>Settings</strong></div>

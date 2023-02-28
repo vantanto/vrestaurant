@@ -88,5 +88,13 @@
                 </li>
             </ul>
         </li>
+        @can('is_admin')
+        <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link @if(Request::routeIs('users.*')) c-active @endif" href="{{ route('users.index') }}">
+                <i class="c-sidebar-nav-icon fa fa-user"></i>
+                User
+            </a>
+        </li>
+        @endcan
     </ul>
 </div>

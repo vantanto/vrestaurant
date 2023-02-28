@@ -12,7 +12,7 @@ class ReservationChart extends Component
     public $dateEnd;
     public $rsvTraffic;
     public $reservationStatus = [];
-    public $reservationChartsMax = 0;
+    public $reservationChartsMax = 1;
     public $reservationTotal = [];
     public $reservationCharts = [];
 

@@ -3,12 +3,16 @@
 <div class="fade-in">
     <x-dashboards.reservation-total />
     
-    <x-dashboards.reservation-chart :rsvTraffic="request()->input('rsvc_traffic')" />
+    @can('is_admin')
+        <x-dashboards.reservation-chart :rsvTraffic="request()->input('rsvc_traffic')" />
+    @endcan
     
     <div class="row">
-        <div class="col-md-12">
-            <x-dashboards.reservation-traffic-by-day :$dateStart :$dateEnd />
-        </div>
+        @can('is_admin')
+            <div class="col-md-12">
+                <x-dashboards.reservation-traffic-by-day :$dateStart :$dateEnd />
+            </div>
+        @endcan
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Today Reservation ({{ count($reservations) }})</div>

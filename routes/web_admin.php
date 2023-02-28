@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ReservationController;
+use App\Http\Controllers\Admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -201,5 +202,20 @@ Route::group(['middleware' => ['auth']], function () {
             ->name('profiles.update');
         // Route::delete('/', [ProfileController::class, 'destroy'])
         //     ->name('profiles.destroy');
+    });
+
+    Route::group(['prefix' => 'users', 'middleware' => 'can:is_admin'], function() {
+        Route::get('/', [UserController::class, 'index'])
+            ->name('users.index');
+        Route::get('/create', [UserController::class, 'create'])
+            ->name('users.create');
+        Route::post('/store', [UserController::class, 'store'])
+            ->name('users.store');
+        Route::get('/edit/{id}', [UserController::class, 'edit'])
+            ->name('users.edit');
+        Route::post('/update/{id}', [UserController::class, 'update'])
+            ->name('users.update');
+        Route::post('/destroy/{id}', [UserController::class, 'destroy'])
+            ->name('users.destroy');
     });
 });
