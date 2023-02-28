@@ -20,7 +20,7 @@ class ReservationController extends Controller
         if ($request->search != null) {
             $reservations->where(
                 fn ($query)  =>
-                $query->where('code', 'like', '%' . $request->seach . '%')
+                $query->where('code', 'like', '%' . $request->search . '%')
                     ->orWhere('name', 'like', '%' . $request->search . '%')
                     ->orWhere('phone', 'like', '%' . $request->search . '%')
                     ->orWhere('email', 'like', '%' . $request->search . '%')
