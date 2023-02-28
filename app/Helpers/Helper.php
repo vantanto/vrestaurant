@@ -54,13 +54,13 @@ class Helper
         if ($showDay == true) {
             $result .= $dateStart->format('d') . ' ';
         }
-        if ($dateStart->format('m') != $dateEnd->format('m')) {
+        if ($dateStart->format('m') != $dateEnd->format('m') || $dateStart->format('Y') != $dateEnd->format('Y')) {
             $result .= $dateStart->format('F');
             if ($dateStart->format('Y') != $dateEnd->format('Y')) {
                 $result .= ' ' . $dateStart->format('Y');
             }
         }
-        if ($showDay == true || $dateStart->format('m') != $dateEnd->format('m')) {
+        if ($showDay == true || $dateStart->format('m') != $dateEnd->format('m') || $dateStart->format('Y') != $dateEnd->format('Y')) {
             $result .= ' - ';
         }
         if ($showDay == true) {
