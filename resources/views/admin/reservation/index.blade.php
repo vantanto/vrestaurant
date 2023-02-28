@@ -14,6 +14,18 @@
                 @endforeach
             </select>
         </div>
+        <div class="form-group col-md-3">
+            <label>Sort</label>
+            <select name="sort" class="form-control">
+                @php $sorts = ['newest', 'date_desc', 'date_asc']; @endphp
+                @foreach ($sorts as $sort)
+                    <option value="{{ $sort }}"
+                        @if($sort == request()->input('sort')) selected @endif>
+                        {{ ucwords(str_replace('_', ' ', $sort)) }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
     </x-slot>
     <div class="row">
         <div class="form-group col-md-4">

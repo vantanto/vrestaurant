@@ -15,7 +15,7 @@ class ReservationController extends Controller
     {
         $statuses = Reservation::$Status;
         $times = Time::where('active', true)->get();
-        $reservations = Reservation::orderBy('id', 'desc');
+        $reservations = Reservation::query();
 
         if ($request->search != null) {
             $reservations->where(
@@ -45,8 +45,16 @@ class ReservationController extends Controller
         if ($request->people != null) {
             $reservations->where('people', $request->people);
         }
+        if ($request->sort != null) {
+            if ($request->sort == 'date_desc') {
+                $reservations->orderBy('date', 'desc');
+            } elseif ($request->sort == 'date_asc') {
+                $reservations->orderBy('date', 'asc');
+            }
+        }
 
-        $reservations = $reservations->paginate(10);
+        $reservations = $reservations->orderBy('id', 'desc')
+            ->paginate(10);
         return view('admin.reservation.index', compact('statuses', 'times', 'reservations'));
     }
 

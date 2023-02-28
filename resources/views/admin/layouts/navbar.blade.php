@@ -10,6 +10,16 @@
     </button>
     <ul class="c-header-nav d-md-down-none">
         <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="{{ route('dashboard') }}">Dashboard</a></li>
+        <li class="c-header-nav-item px-3">
+            <a class="c-header-nav-link" href="{{ route('reservations.index', [
+                    'status' => \App\Models\Reservation::$Status['1'],
+                    'date_start' => date('Y-m-01'),
+                    'date_end' => date('Y-m-t'),
+                    'sort' => 'date_desc'
+                ]) }}">
+                {{ ucwords(\App\Models\Reservation::$Status['1']) }} Reservation
+            </a>
+        </li>
     </ul>
     <ul class="c-header-nav ml-auto mr-4">
         <li class="c-header-nav-item d-md-down-none mx-2">
