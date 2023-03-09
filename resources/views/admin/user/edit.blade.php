@@ -20,13 +20,13 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="password">New Password</label>
-                            <input type="password" id="password" name="password" class="form-control" required>
+                            <label for="password">New Password (Optional)</label>
+                            <input type="password" id="password" name="password" class="form-control">
                             <div class="invalid-feedback"></div>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="password_confirmation">Confirm New Password</label>
-                            <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" required>
+                            <label for="password_confirmation">Confirm New Password (Optional)</label>
+                            <input type="password" id="password_confirmation" name="password_confirmation" class="form-control">
                             <div class="invalid-feedback"></div>
                         </div>
                     </div>

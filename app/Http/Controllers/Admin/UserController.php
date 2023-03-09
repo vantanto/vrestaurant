@@ -69,7 +69,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $validator = \Validator::make($request->all(), [
             'name' => 'required|string',
-            'password' => ['required', Password::defaults(), 'confirmed'],
+            'password' => ['nullable', Password::defaults(), 'confirmed'],
         ]);
         if ($validator->fails()) {
             return response()->json(['status' => 'validator', 'msg' => $validator->messages()], 400);
@@ -78,7 +78,7 @@ class UserController extends Controller
         DB::beginTransaction();
         try {
             $user->fill($request->only('name'));
-            $user->password = Hash::make($request->password);
+            if ($request->password != null) $user->password = Hash::make($request->password);
             $user->save();
             DB::commit();
     
